@@ -53,10 +53,10 @@ export default function LoginPage() {
   return (
     <div className="mx-auto my-6 max-w-md px-8 sm:px-0">
       <h1 className="scroll-m-20 pb-2 text-center text-3xl font-semibold tracking-tight first:mt-0">
-        Welcome Back!
+        ยินดีต้อนรับกลับมา!
       </h1>
       <p className="text-center text-sm text-muted-foreground">
-        Enter your email and password to sign in.
+        กรอกอีเมลและรหัสผ่านของคุณเพื่อเข้าสู่ระบบ
       </p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-5">
@@ -65,10 +65,10 @@ export default function LoginPage() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>อีเมล</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your email address"
+                    placeholder="กรอกอีเมลของคุณ"
                     {...field}
                     disabled={isPending}
                   />
@@ -82,10 +82,10 @@ export default function LoginPage() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>รหัสผ่าน</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your password"
+                    placeholder="กรอกรหัสผ่านของคุณ"
                     {...field}
                     type="password"
                     disabled={isPending}
@@ -100,20 +100,20 @@ export default function LoginPage() {
           <FormSuccess message={success} />
 
           <Button type="submit" className="w-full" disabled={isPending}>
-            Submit
+            เข้าสู่ระบบ
           </Button>
         </form>
       </Form>
 
       <div className="mt-6 flex items-center justify-center gap-2">
         <p className="text-sm text-muted-foreground">
-          {`Don't have an account ?`}
+          ยังไม่มีบัญชีใช่หรือไม่?
         </p>
         <Link
           href="/register"
           className="text-sm font-semibold text-primary hover:text-primary/90"
         >
-          Sign up
+          สมัครสมาชิก
         </Link>
       </div>
     </div>

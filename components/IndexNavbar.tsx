@@ -7,12 +7,6 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 // Icons
 import { Menu } from "lucide-react";
@@ -21,8 +15,8 @@ export default function Navbar() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <header className="absolute left-0 right-0 top-0">
-      <nav className="mx-auto flex max-w-screen-2xl justify-between px-8 pt-4">
+    <header className="sticky top-0 z-50 bg-background shadow-sm">
+      <nav className="mx-auto flex max-w-screen-2xl justify-between px-8 py-4">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-xl font-bold tracking-tight">Eventify</span>
         </Link>
