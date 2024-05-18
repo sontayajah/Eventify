@@ -22,8 +22,8 @@ export default function RegisterPage() {
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      name: "",
       email: "",
+      username: "",
       password: "",
       confirmPassword: "",
     },
@@ -40,21 +40,11 @@ export default function RegisterPage() {
       <h1 className="scroll-m-20 pb-2 text-center text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
         สมัครสมาชิกบัญชีใหม่
       </h1>
+      <p className="text-center text-sm text-muted-foreground">
+        กรอกชื่อผู้ใช้และรหัสผ่านของคุณเพื่อสมัครสมาชิก
+      </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4 space-y-5">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>ชื่อ</FormLabel>
-                <FormControl>
-                  <Input placeholder="กรอกชื่อของคุณ" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-5">
           <FormField
             control={form.control}
             name="email"
@@ -63,6 +53,19 @@ export default function RegisterPage() {
                 <FormLabel>อีเมล</FormLabel>
                 <FormControl>
                   <Input placeholder="กรอกอีเมลของคุณ" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>ชื่อผู้ใช้</FormLabel>
+                <FormControl>
+                  <Input placeholder="กรอกชื่อผู้ใช้ของคุณ" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -116,7 +119,7 @@ export default function RegisterPage() {
 
       <div className="mt-6 flex items-center justify-center gap-2">
         <p className="text-sm text-muted-foreground">
-          คุณมีบัญชีแล้วใช่หรือไม่?
+          คุณมีบัญชีอยู่แล้วใช่หรือไม่?
         </p>
         <Link
           href="/login"

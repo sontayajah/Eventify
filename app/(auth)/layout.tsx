@@ -6,8 +6,6 @@ import Link from "next/link";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-import { useTheme } from "next-themes";
-
 const noto_sans_thai = Noto_Sans_Thai({ subsets: ["thai"] });
 
 export const metadata: Metadata = {

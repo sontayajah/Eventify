@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   },
   description:
     "Discover, create, and share events with Eventify - the ultimate event platform.",
+  icons: "/logo/bus-logo.jpg",
 };
 
 export default function RootLayout({

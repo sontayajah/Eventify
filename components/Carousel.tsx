@@ -21,7 +21,6 @@ export default function Carousel() {
     autoplay: true,
     autoplaySpeed: 3000,
     cssEase: "linear",
-    adaptiveHeight: true,
     arrows: false,
     appendDots: (dots: any) => (
       <div

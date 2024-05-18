@@ -33,7 +33,7 @@ export default function LoginPage() {
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -56,19 +56,19 @@ export default function LoginPage() {
         ยินดีต้อนรับกลับมา!
       </h1>
       <p className="text-center text-sm text-muted-foreground">
-        กรอกอีเมลและรหัสผ่านของคุณเพื่อเข้าสู่ระบบ
+        กรอกชื่อผู้ใช้และรหัสผ่านของคุณเพื่อเข้าสู่ระบบ
       </p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-5">
           <FormField
             control={form.control}
-            name="email"
+            name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>อีเมล</FormLabel>
+                <FormLabel>ชื่อผู้ใช้</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="กรอกอีเมลของคุณ"
+                    placeholder="กรอกชื่อผู้ใช้ของคุณ"
                     {...field}
                     disabled={isPending}
                   />
@@ -107,7 +107,7 @@ export default function LoginPage() {
 
       <div className="mt-6 flex items-center justify-center gap-2">
         <p className="text-sm text-muted-foreground">
-          ยังไม่มีบัญชีใช่หรือไม่?
+          คุณยังไม่ได้เป็นสมาชิกใช่หรือไม่ ?
         </p>
         <Link
           href="/register"

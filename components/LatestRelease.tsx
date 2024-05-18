@@ -10,12 +10,12 @@ import { ChevronsRight } from "lucide-react";
 
 export default function LatestRelease() {
   return (
-    <div className="lg:w-1/8 w-full border-b py-8 pl-4 lg:border-none lg:py-0">
+    <div className="w-full select-none border-b py-8 lg:w-1/3 lg:border-none lg:py-0 lg:pl-4">
       <div className="flex items-center gap-2">
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
           ผลงานใหม่ล่าสุด
         </h4>
-        <Badge className="hover:cursor-pointer">NEW</Badge>
+        <Badge className="hover:cursor-pointer">ใหม่</Badge>
       </div>
 
       <div className="flex h-full flex-col">
@@ -33,7 +33,7 @@ export default function LatestRelease() {
             alt="youtube logo"
             width="1280"
             height="720"
-            className="i max-h-[85px] w-1/4 max-w-[127px] py-3"
+            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
             loading="lazy"
           />
           <div className="w-full overflow-hidden truncate whitespace-normal">
@@ -68,7 +68,7 @@ export default function LatestRelease() {
             alt="youtube logo"
             width="1280"
             height="720"
-            className="i max-h-[85px] w-1/4 max-w-[127px] py-3"
+            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
             loading="lazy"
           />
           <div className="w-full overflow-hidden truncate whitespace-normal">
@@ -103,7 +103,7 @@ export default function LatestRelease() {
             alt="youtube logo"
             width="1280"
             height="720"
-            className="i max-h-[85px] w-1/4 max-w-[127px] py-3"
+            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
             loading="lazy"
           />
           <div className="w-full overflow-hidden truncate whitespace-normal">
@@ -135,7 +135,7 @@ export default function LatestRelease() {
             alt="youtube logo"
             width="1280"
             height="720"
-            className="i max-h-[85px] w-1/4 max-w-[127px] py-3"
+            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
             loading="lazy"
           />
           <div className="w-full overflow-hidden truncate whitespace-normal">
@@ -161,7 +161,7 @@ export default function LatestRelease() {
             variant="link"
             className="h-min w-fit px-0 py-0 hover:text-primary/90 hover:no-underline dark:text-primary"
             onClick={() => {
-              window.open("https://youtube.com/watch?v=HwcSy5OwP8E", "_blank");
+              window.open("http://localhost:3000/LatestPosts", "_blank");
             }}
           >
             ดูทั้งหมด <ChevronsRight size={16} className="ml-0.5" />
