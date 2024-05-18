@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Thai } from "next/font/google";
 import "../globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import IndexNavbar from "@/components/IndexNavbar";
 
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
   },
   description:
     "Discover, create, and share events with Eventify - the ultimate event platform.",
+  icons: "/logo/bus-logo.jpg",
 };
 
 export default function RootLayout({
@@ -24,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={noto_sans_thai.className}>
+      <body className={`${noto_sans_thai.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

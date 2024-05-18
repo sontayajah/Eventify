@@ -22,9 +22,10 @@ export default function RegisterPage() {
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      fullname: "",
       email: "",
+      username: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
@@ -37,18 +38,21 @@ export default function RegisterPage() {
   return (
     <div className="mx-auto my-6 max-w-md px-8 sm:px-0">
       <h1 className="scroll-m-20 pb-2 text-center text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
-        Create your own account
+        สมัครสมาชิกบัญชีใหม่
       </h1>
+      <p className="text-center text-sm text-muted-foreground">
+        กรอกชื่อผู้ใช้และรหัสผ่านของคุณเพื่อสมัครสมาชิก
+      </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-4 space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-5">
           <FormField
             control={form.control}
-            name="fullname"
+            name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel>อีเมล</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your full name" {...field} />
+                  <Input placeholder="กรอกอีเมลของคุณ" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -56,12 +60,12 @@ export default function RegisterPage() {
           />
           <FormField
             control={form.control}
-            name="email"
+            name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>ชื่อผู้ใช้</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your email address" {...field} />
+                  <Input placeholder="กรอกชื่อผู้ใช้ของคุณ" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -72,10 +76,10 @@ export default function RegisterPage() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>รหัสผ่าน</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Enter your password"
+                    placeholder="กรอกรหัสผ่านของคุณ"
                     {...field}
                     type="password"
                   />
@@ -89,13 +93,13 @@ export default function RegisterPage() {
           />
           <FormField
             control={form.control}
-            name="password"
+            name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
+                <FormLabel>ยืนยันรหัสผ่าน</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Confirm your password"
+                    placeholder="กรอกรหัสผ่านของคุณอีกครั้ง"
                     {...field}
                     type="password"
                   />
@@ -108,20 +112,20 @@ export default function RegisterPage() {
             )}
           />
           <Button type="submit" className="w-full">
-            Submit
+            สมัครสมาชิก
           </Button>
         </form>
       </Form>
 
       <div className="mt-6 flex items-center justify-center gap-2">
         <p className="text-sm text-muted-foreground">
-          {`Already have an account ?`}
+          คุณมีบัญชีอยู่แล้วใช่หรือไม่?
         </p>
         <Link
           href="/login"
           className="text-sm font-semibold text-primary hover:text-primary/90"
         >
-          Sign in
+          เข้าสู่ระบบ
         </Link>
       </div>
     </div>
