@@ -40,22 +40,42 @@ export default function Navbar() {
             <div className="mx-2 hidden h-8 border-l border-neutral-200 dark:border-neutral-700 md:block"></div>
             <ul className="hidden gap-8 text-sm font-semibold md:flex">
               <li>
-                <Link href="/" className="transition-colors hover:text-primary">
+                <Link
+                  href="https://tpopnow.vercel.app/"
+                  className="transition-colors hover:text-primary"
+                >
+                  หน้าหลัก
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://tpopnow.vercel.app/news"
+                  className="transition-colors hover:text-primary"
+                >
                   ประกาศ
                 </Link>
               </li>
               <li>
-                <Link href="/" className="transition-colors hover:text-primary">
+                <Link
+                  href="https://tpopnow.vercel.app/release"
+                  className="transition-colors hover:text-primary"
+                >
                   ผลงาน
                 </Link>
               </li>
               <li>
-                <Link href="/" className="transition-colors hover:text-primary">
+                <Link
+                  href="https://tpopnow.vercel.app/events"
+                  className="transition-colors hover:text-primary"
+                >
                   กิจกรรม
                 </Link>
               </li>
               <li>
-                <Link href="/" className="transition-colors hover:text-primary">
+                <Link
+                  href="https://tpopnow.vercel.app/calendar"
+                  className="transition-colors hover:text-primary"
+                >
                   ปฏิทิน
                 </Link>
               </li>

@@ -4,7 +4,7 @@ import LatestRelease from "@/components/LatestRelease";
 
 export default function Home() {
   return (
-    <main className="m-auto mt-4 px-4 xl:container">
+    <main className="m-auto mt-4 px-4 sm:container">
       <div className="flex flex-col lg:flex-row">
         <Carousel />
         <LatestRelease />
