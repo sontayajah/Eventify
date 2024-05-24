@@ -13,14 +13,14 @@ export default function LatestRelease() {
     <div className="w-full select-none border-b py-8 lg:w-1/3 lg:border-none lg:py-0 lg:pl-4">
       <div className="flex items-center gap-2">
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          ผลงานใหม่ล่าสุด
+          ผลงานใหม่
         </h4>
         <Badge className="hover:cursor-pointer">ใหม่</Badge>
       </div>
 
       <div className="flex h-full flex-col">
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
           onClick={() => {
             window.open(
               "https://www.youtube.com/watch?v=Wcp2gfuZFRc",
@@ -55,7 +55,7 @@ export default function LatestRelease() {
         </div>
 
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
           onClick={() => {
             window.open(
               "https://www.youtube.com/watch?v=0HeOd3sVNz4",
@@ -90,7 +90,7 @@ export default function LatestRelease() {
         </div>
 
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
           onClick={() => {
             window.open(
               "https://www.youtube.com/watch?v=FuadV-aiigQ",
@@ -125,7 +125,7 @@ export default function LatestRelease() {
         </div>
 
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
           onClick={() => {
             window.open("https://youtube.com/watch?v=HwcSy5OwP8E", "_blank");
           }}
@@ -164,7 +164,7 @@ export default function LatestRelease() {
               window.open("http://localhost:3000/LatestPosts", "_blank");
             }}
           >
-            ดูทั้งหมด <ChevronsRight size={16} className="ml-0.5" />
+            ดูเพิ่มเติม <ChevronsRight size={16} className="ml-0.5" />
           </Button>
         </div>
       </div>

@@ -10,11 +10,11 @@ const noto_sans_thai = Noto_Sans_Thai({ subsets: ["thai"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Eventify",
-    template: "%s | Eventify",
+    default: "T-Pop Now",
+    template: "%s | T-Pop Now",
   },
   description:
-    "Discover, create, and share events with Eventify - the ultimate event platform.",
+    "Discover, create, and share events with T-Pop Now - the ultimate T-Pop platform.",
 };
 
 export default function RootLayout({
@@ -37,7 +37,7 @@ export default function RootLayout({
               <nav className="mx-auto flex h-14 max-w-screen-2xl justify-between px-8 pt-4">
                 <Link href="/" className="flex items-center gap-2">
                   <span className="text-xl font-bold tracking-tight">
-                    Eventify
+                    T-Pop Now
                   </span>
                 </Link>
               </nav>

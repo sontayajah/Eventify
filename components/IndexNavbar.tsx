@@ -2,15 +2,15 @@
 
 // Components
 import Link from "next/link";
-import Image from "next/image";
 
 // Icons
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
+import HamburgerMenu from "./HamburgerMenu";
 
 export default function Navbar() {
   const { setTheme, theme } = useTheme();
@@ -20,35 +20,46 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-50 bg-background shadow-sm">
         <nav className="mx-auto flex justify-between px-4 py-4 xl:container">
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="focus-visible:ring-transparent sm:hidden"
-              onClick={() => setNavOpen((prev) => !prev)}
-            >
-              <Menu />
-            </Button>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="focus-visible:ring-transparent md:hidden"
+                onClick={() => setNavOpen((prev) => !prev)}
+              >
+                <Menu />
+              </Button>
 
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/logo/bus-logo-black.png"
-                alt="bus logo"
-                width="1280"
-                height="720"
-                className="block h-6 w-12 dark:hidden"
-              />
-              <Image
-                src="/logo/bus-logo-white.png"
-                alt="bus logo"
-                width="1280"
-                height="720"
-                className="hidden h-6 w-12 dark:block"
-              />
-              <span className="mt-0.5 hidden text-xl font-bold tracking-tight md:block">
-                Because of You, I Shine
-              </span>
-            </Link>
+              <Link href="/" className="flex items-center gap-2">
+                <span className="mt-0.5 text-xl font-bold tracking-tight">
+                  T-Pop Now
+                </span>
+              </Link>
+            </div>
+            <div className="mx-2 hidden h-8 border-l border-neutral-200 dark:border-neutral-700 md:block"></div>
+            <ul className="hidden gap-8 text-sm font-semibold md:flex">
+              <li>
+                <Link href="/" className="transition-colors hover:text-primary">
+                  ประกาศ
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="transition-colors hover:text-primary">
+                  ผลงาน
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="transition-colors hover:text-primary">
+                  กิจกรรม
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="transition-colors hover:text-primary">
+                  ปฏิทิน
+                </Link>
+              </li>
+            </ul>
           </div>
           <div className="flex items-center gap-2">
             <Button
@@ -66,57 +77,25 @@ export default function Navbar() {
             <Button
               asChild
               variant="ghost"
-              className="hidden font-semibold sm:flex"
+              className="hidden font-semibold md:flex"
             >
               <Link href="/login">เข้าสู่ระบบ</Link>
             </Button>
-            <Button asChild className="hidden font-semibold sm:flex">
+            <Button asChild className="hidden font-semibold md:flex">
               <Link href="/register">สมัครสมาชิก</Link>
             </Button>
           </div>
         </nav>
       </header>
 
-      <div className="relative z-50 sm:hidden">
+      <div className="relative z-50 md:hidden">
         {navOpen ? (
           <div
             className="fixed inset-0 bg-neutral-900 bg-opacity-50 opacity-100"
             onClick={() => setNavOpen(false)}
           ></div>
         ) : null}
-        <div
-          className={`fixed inset-y-0 start-0 z-50 ${!navOpen ? "-translate-x-full" : ""} w-screen max-w-sm bg-background transition-all`}
-        >
-          <div className="flex w-full items-center justify-between gap-2 px-5 py-4">
-            <Link href="/" className="flex items-center gap-2">
-              {/* <span className="mt-0.5 text-xl font-bold tracking-tight">
-                BUS
-              </span> */}
-              <Image
-                src="/logo/bus-logo-black.png"
-                alt="bus logo"
-                width="1280"
-                height="720"
-                className="block h-6 w-12 dark:hidden"
-              />
-              <Image
-                src="/logo/bus-logo-white.png"
-                alt="bus logo"
-                width="1280"
-                height="720"
-                className="hidden h-6 w-12 dark:block"
-              />
-            </Link>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-2 top-2 h-8 w-8 rounded-full focus-visible:ring-transparent"
-              onClick={() => setNavOpen((prev) => !prev)}
-            >
-              <X size={16} strokeWidth={1.5} />
-            </Button>
-          </div>
-        </div>
+        <HamburgerMenu navOpen={navOpen} setNavOpen={setNavOpen} />
       </div>
     </>
   );

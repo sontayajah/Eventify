@@ -9,7 +9,7 @@ export default function Home() {
         <Carousel />
         <LatestRelease />
       </div>
-      {/* <LatestPosts /> */}
+      <LatestPosts />
     </main>
   );
 }

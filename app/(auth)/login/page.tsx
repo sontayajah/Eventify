@@ -52,7 +52,7 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto my-6 max-w-md px-8 sm:px-0">
-      <h1 className="scroll-m-20 pb-2 text-center text-3xl font-semibold tracking-tight first:mt-0">
+      <h1 className="scroll-m-20 pb-2 text-center text-2xl font-semibold tracking-tight first:mt-0 sm:text-3xl">
         ยินดีต้อนรับกลับมา!
       </h1>
       <p className="text-center text-sm text-muted-foreground">
@@ -71,6 +71,7 @@ export default function LoginPage() {
                     placeholder="กรอกชื่อผู้ใช้ของคุณ"
                     {...field}
                     disabled={isPending}
+                    className="invalid:ring-black"
                   />
                 </FormControl>
                 <FormMessage />
