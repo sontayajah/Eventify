@@ -4,13 +4,14 @@
 import Link from "next/link";
 
 // Icons
-import { Menu, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun, User } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
 import HamburgerMenu from "./HamburgerMenu";
+import ProfileDropdownMenu from "./ProfileDropdownMenu";
 
 export default function Navbar() {
   const { setTheme, theme } = useTheme();
@@ -19,26 +20,26 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-background shadow-sm">
-        <nav className="mx-auto flex justify-between px-4 py-4 xl:container">
+        <nav className="mx-auto flex justify-between px-4 py-4 sm:container">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
                 size="icon"
-                className="focus-visible:ring-transparent md:hidden"
+                className="focus-visible:ring-transparent lg:hidden"
                 onClick={() => setNavOpen((prev) => !prev)}
               >
                 <Menu />
               </Button>
 
               <Link href="/" className="flex items-center gap-2">
-                <span className="mt-0.5 text-xl font-bold tracking-tight">
+                <span className="logo mt-0.5 text-xl font-bold tracking-tight">
                   T-Pop Now
                 </span>
               </Link>
             </div>
-            <div className="mx-2 hidden h-8 border-l border-neutral-200 dark:border-neutral-700 md:block"></div>
-            <ul className="hidden gap-8 text-sm font-semibold md:flex">
+            <div className="mx-2 hidden h-8 border-l border-neutral-200 dark:border-neutral-700 lg:block"></div>
+            <ul className="hidden gap-8 text-sm font-semibold lg:flex">
               <li>
                 <Link
                   href="https://tpopnow.vercel.app/"
@@ -82,10 +83,10 @@ export default function Navbar() {
             </ul>
           </div>
           <div className="flex items-center gap-2">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
-              className="focus-visible:ring-transparent"
+              className="hidden focus-visible:ring-transparent lg:flex"
               onClick={() => {
                 setTheme(theme === "dark" ? "light" : "dark");
               }}
@@ -93,22 +94,25 @@ export default function Navbar() {
               <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
-            </Button>
-            <Button
+            </Button> */}
+
+            <ProfileDropdownMenu />
+
+            {/* <Button
               asChild
               variant="ghost"
-              className="hidden font-semibold md:flex"
+              className="hidden font-semibold lg:flex"
             >
               <Link href="/login">เข้าสู่ระบบ</Link>
             </Button>
-            <Button asChild className="hidden font-semibold md:flex">
+            <Button asChild className="hidden font-semibold lg:flex">
               <Link href="/register">สมัครสมาชิก</Link>
-            </Button>
+            </Button> */}
           </div>
         </nav>
       </header>
 
-      <div className="relative z-50 md:hidden">
+      <div className="relative z-50 lg:hidden">
         {navOpen ? (
           <div
             className="fixed inset-0 bg-neutral-900 bg-opacity-50 opacity-100"

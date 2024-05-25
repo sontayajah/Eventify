@@ -20,7 +20,7 @@ export default function LatestRelease() {
 
       <div className="flex h-full flex-col">
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="group flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card px-4 text-card-foreground transition-all hover:cursor-pointer hover:bg-accent"
           onClick={() => {
             window.open(
               "https://www.youtube.com/watch?v=Wcp2gfuZFRc",
@@ -28,14 +28,16 @@ export default function LatestRelease() {
             );
           }}
         >
-          <Image
-            src="/youtube-cover/bus-nmtw-reaction.jpg"
-            alt="youtube logo"
-            width="1280"
-            height="720"
-            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
-            loading="lazy"
-          />
+          <div className="h-20 w-28 shrink-0 overflow-hidden">
+            <Image
+              src="/youtube-cover/bus-nmtw-reaction.jpg"
+              alt="youtube logo"
+              width="1280"
+              height="720"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
           <div className="w-full overflow-hidden truncate whitespace-normal">
             <small className="line-clamp-2 text-sm font-semibold">
               {`[BUS REACTION] BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
@@ -55,7 +57,7 @@ export default function LatestRelease() {
         </div>
 
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="group flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card px-4 text-card-foreground transition-all hover:cursor-pointer hover:bg-accent"
           onClick={() => {
             window.open(
               "https://www.youtube.com/watch?v=0HeOd3sVNz4",
@@ -63,14 +65,16 @@ export default function LatestRelease() {
             );
           }}
         >
-          <Image
-            src="/youtube-cover/bus-nmtw-artist-ver.jpg"
-            alt="youtube logo"
-            width="1280"
-            height="720"
-            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
-            loading="lazy"
-          />
+          <div className="h-20 w-28 shrink-0 overflow-hidden">
+            <Image
+              src="/youtube-cover/bus-nmtw-artist-ver.jpg"
+              alt="youtube logo"
+              width="1280"
+              height="720"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
           <div className="w-full overflow-hidden truncate whitespace-normal">
             <small className="line-clamp-2 text-sm font-semibold">
               {`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' (Artist version)`}
@@ -90,7 +94,7 @@ export default function LatestRelease() {
         </div>
 
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="group flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card px-4 text-card-foreground transition-all hover:cursor-pointer hover:bg-accent"
           onClick={() => {
             window.open(
               "https://www.youtube.com/watch?v=FuadV-aiigQ",
@@ -98,14 +102,16 @@ export default function LatestRelease() {
             );
           }}
         >
-          <Image
-            src="/youtube-cover/bus-nmtw.webp"
-            alt="youtube logo"
-            width="1280"
-            height="720"
-            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
-            loading="lazy"
-          />
+          <div className="h-20 w-28 shrink-0 overflow-hidden">
+            <Image
+              src="/youtube-cover/bus-nmtw.webp"
+              alt="youtube logo"
+              width="1280"
+              height="720"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
           <div className="w-full overflow-hidden truncate whitespace-normal">
             <small className="line-clamp-2 text-sm font-semibold">
               {`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
@@ -125,19 +131,21 @@ export default function LatestRelease() {
         </div>
 
         <div
-          className="flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card text-card-foreground transition-all hover:cursor-pointer hover:bg-accent hover:px-2"
+          className="group flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card px-4 text-card-foreground transition-all hover:cursor-pointer hover:bg-accent"
           onClick={() => {
             window.open("https://youtube.com/watch?v=HwcSy5OwP8E", "_blank");
           }}
         >
-          <Image
-            src="/youtube-cover/bus5-marckris-Introduction.jpg"
-            alt="youtube logo"
-            width="1280"
-            height="720"
-            className="max-h-[85px] w-1/4 max-w-[127px] py-3"
-            loading="lazy"
-          />
+          <div className="h-20 w-28 shrink-0 overflow-hidden">
+            <Image
+              src="/youtube-cover/bus5-marckris-Introduction.jpg"
+              alt="youtube logo"
+              width="1280"
+              height="720"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
           <div className="w-full overflow-hidden truncate whitespace-normal">
             <small className="line-clamp-2 text-sm font-semibold">
               {`BUS5 Member Introduction - MARCKRIS`}
