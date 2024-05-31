@@ -17,8 +17,16 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { RegisterSchema } from "@/lib/validator";
+import { useState, useTransition } from "react";
+
+import { register } from "@/lib/actions/register.actions";
+import FormError from "@/components/FormError";
 
 export default function RegisterPage() {
+  const [error, setError] = useState<string | undefined>("");
+
+  const [isPending, startTransition] = useTransition();
+
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -30,9 +38,13 @@ export default function RegisterPage() {
   });
 
   function onSubmit(values: z.infer<typeof RegisterSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    setError("");
+
+    startTransition(() => {
+      register(values).then((data) => {
+        setError(data.error);
+      });
+    });
   }
 
   return (
@@ -52,7 +64,11 @@ export default function RegisterPage() {
               <FormItem>
                 <FormLabel>อีเมล</FormLabel>
                 <FormControl>
-                  <Input placeholder="กรอกอีเมลของคุณ" {...field} />
+                  <Input
+                    placeholder="กรอกอีเมลของคุณ"
+                    {...field}
+                    disabled={isPending}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -65,7 +81,11 @@ export default function RegisterPage() {
               <FormItem>
                 <FormLabel>ชื่อผู้ใช้</FormLabel>
                 <FormControl>
-                  <Input placeholder="กรอกชื่อผู้ใช้ของคุณ" {...field} />
+                  <Input
+                    placeholder="กรอกชื่อผู้ใช้ของคุณ"
+                    {...field}
+                    disabled={isPending}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -82,6 +102,7 @@ export default function RegisterPage() {
                     placeholder="กรอกรหัสผ่านของคุณ"
                     {...field}
                     type="password"
+                    disabled={isPending}
                   />
                 </FormControl>
                 {/* <FormDescription>
@@ -102,6 +123,7 @@ export default function RegisterPage() {
                     placeholder="กรอกรหัสผ่านของคุณอีกครั้ง"
                     {...field}
                     type="password"
+                    disabled={isPending}
                   />
                 </FormControl>
                 {/* <FormDescription>
@@ -111,7 +133,10 @@ export default function RegisterPage() {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
+
+          <FormError message={error} />
+
+          <Button type="submit" className="w-full" disabled={isPending}>
             สมัครสมาชิก
           </Button>
         </form>

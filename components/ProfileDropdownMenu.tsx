@@ -9,14 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-  CreditCard,
-  Fingerprint,
-  LogOut,
-  Moon,
-  User,
-  UserPlus,
-} from "lucide-react";
+import { Fingerprint, LogOut, Moon, User, UserPlus } from "lucide-react";
 
 import { Switch } from "@/components/ui/switch";
 
@@ -26,7 +19,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 
 export default function ProfileDropdownMenu() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, theme, systemTheme } = useTheme();
 
   return (
     <>
@@ -53,7 +46,7 @@ export default function ProfileDropdownMenu() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link href="/login" className="flex flex-grow text-base">
+              <Link href="/register" className="flex flex-grow text-base">
                 <UserPlus className="mr-4 h-6 w-6" />
                 สมัครสมาชิก
               </Link>
@@ -68,7 +61,10 @@ export default function ProfileDropdownMenu() {
                   <span className="text-base">ธีมสีเข้ม</span>
                 </div>{" "}
                 <Switch
-                  checked={theme === "dark"}
+                  checked={
+                    theme === "dark" ||
+                    (theme === "system" && systemTheme === "dark")
+                  }
                   onCheckedChange={(checked: boolean) => {
                     if (checked) {
                       setTheme("dark");

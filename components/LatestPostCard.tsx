@@ -12,7 +12,7 @@ export default function LatestPostCard() {
     <div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-2">
       <div className="group flex flex-row items-center">
         <div className="z-0 me-3 block h-[164px] w-24 flex-shrink-0 overflow-hidden rounded-3xl object-cover sm:mb-0 sm:me-6 sm:h-60 sm:w-36 lg:h-60 lg:w-44 xl:size-60">
-          <Link href="/">
+          <Link href="/news/bus-marckris-sarahsalola-live-session-vlog">
             <Image
               src="/youtube-cover/marckris-sarahsalola-live-session.jpg"
               alt="youtube logo"
@@ -25,7 +25,7 @@ export default function LatestPostCard() {
         <div className="flex h-full flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal">
           <div className="flex flex-wrap gap-1.5">
             <Link
-              href="/"
+              href="/artists/bus"
               className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 transition-colors duration-300 hover:bg-blue-600 hover:text-blue-100"
             >
               BUS 🚌
@@ -46,7 +46,10 @@ export default function LatestPostCard() {
             </Link>
           </div>
 
-          <Link href="/" className="flex flex-col gap-3">
+          <Link
+            href="/news/bus-marckris-sarahsalola-live-session-vlog"
+            className="flex flex-col gap-3"
+          >
             <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg">{`MARCKRIS พาบุกกองถ่าย #sarahsalolaxMARCKRIS Live Session ✨`}</div>
 
             <div className="hidden sm:block">
@@ -60,15 +63,15 @@ export default function LatestPostCard() {
           </Link>
           <div className="flex items-center">
             <Link
-              href="/"
+              href="/profiles/bus"
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
                 src="/logo/bus-logo.jpg"
-                alt="youtube logo"
+                alt="bus logo"
                 width="28"
                 height="28"
-                className="mr-2 size-5 rounded-full sm:size-7"
+                className="mr-2 size-5 rounded-full border sm:size-7"
               />
               <div className="overflow-hidden truncate whitespace-normal">
                 <span className="line-clamp-1">
@@ -150,7 +153,7 @@ export default function LatestPostCard() {
 
       <div className="group flex flex-row items-center">
         <div className="z-0 me-3 block h-[164px] w-24 flex-shrink-0 overflow-hidden rounded-3xl object-cover sm:mb-0 sm:me-6 sm:h-60 sm:w-36 lg:h-60 lg:w-44 xl:size-60">
-          <Link href="/">
+          <Link href="/news/gotcha-pop-2-concert">
             <Image
               src="/card-cover/gotchapop2-concert.jpeg"
               alt="gotcha pop 2 concert cover"
@@ -163,14 +166,17 @@ export default function LatestPostCard() {
         <div className="flex h-full flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal">
           <div className="flex flex-wrap gap-1.5">
             <Link
-              href="/"
+              href="/concerts"
               className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 transition-colors duration-300 hover:bg-green-600 hover:text-green-100"
             >
               คอนเสิร์ต 🎤
             </Link>
           </div>
 
-          <Link href="/" className="flex flex-col gap-3">
+          <Link
+            href="/news/gotcha-pop-2-concert"
+            className="flex flex-col gap-3"
+          >
             <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg">{`GOTCHA POP 2 CONCERT`}</div>
 
             <div className="hidden sm:block">
@@ -189,20 +195,18 @@ export default function LatestPostCard() {
           </Link>
           <div className="flex items-center">
             <Link
-              href="/"
+              href="/profiles/atimeshowbiz"
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
-                src="/logo/bus-logo.jpg"
-                alt="youtube logo"
+                src="/logo/ATIMESHOWBIZ.jpg"
+                alt="ATIMESHOWBIZ logo"
                 width="28"
                 height="28"
-                className="mr-2 size-5 rounded-full sm:size-7"
+                className="mr-2 size-5 rounded-full border sm:size-7"
               />
               <div className="overflow-hidden truncate whitespace-normal">
-                <span className="line-clamp-1">
-                  BUS because of you i shine{" "}
-                </span>
+                <span className="line-clamp-1">ATIMESHOWBIZ</span>
               </div>
               <Image
                 src="/icons/verify-icons/verify-gold.png"

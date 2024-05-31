@@ -42,24 +42,28 @@ export default function HamburgerMenu({
         </Button>
       </div>
 
-      <div className="mb-4 border-b px-8 pb-6">
+      <div className="px-8">
         <p className="text-sm text-muted-foreground">
           แหล่งรวบรวมข่าวสารและข้อมูลในวงการ T-Pop ที่ครบถ้วนที่สุด!
           ติดตามศิลปินที่คุณชื่นชอบและความเคลื่อนไหวที่ไม่ควรพลาดได้ที่นี่
         </p>
       </div>
 
+      <div className="mb-2 mt-4 px-4">
+        <Separator />
+      </div>
+
       <div className="flex h-full flex-col justify-between overflow-y-auto px-4">
         <Accordion type="multiple" className="w-full" defaultValue={["item-2"]}>
           <AccordionItem value="item-1">
             <AccordionTrigger className="chevronDownDisable rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
-              หน้าหลัก
+              ข่าวสาร
             </AccordionTrigger>
           </AccordionItem>
 
           <AccordionItem value="item-2">
             <AccordionTrigger className="mt-1 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
-              ประกาศ
+              ศิลปิน
             </AccordionTrigger>
             <div className="relative">
               <AccordionContent className="pb-0 ps-8 pt-0">
@@ -68,33 +72,111 @@ export default function HamburgerMenu({
                   orientation="vertical"
                   className="absolute bottom-0 start-4 h-full"
                 />
+                <AccordionItem value="item-2-1">
+                  <AccordionTrigger className="mt-1 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
+                    เดี่ยว
+                  </AccordionTrigger>
+                  <div className="relative">
+                    <AccordionContent className="pb-0 ps-8 pt-0">
+                      <Separator
+                        orientation="vertical"
+                        className="absolute bottom-0 start-4 h-full"
+                      />
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        ชาย
+                      </Button>
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        หญิง
+                      </Button>
+                    </AccordionContent>
+                  </div>
+                </AccordionItem>
+                <AccordionItem value="item-2-2">
+                  <AccordionTrigger className="mt-1 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
+                    คู่
+                  </AccordionTrigger>
+                  <div className="relative">
+                    <AccordionContent className="pb-0 ps-8 pt-0">
+                      <Separator
+                        orientation="vertical"
+                        className="absolute bottom-0 start-4 h-full"
+                      />
+
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        ชาย
+                      </Button>
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        หญิง
+                      </Button>
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        ผสม
+                      </Button>
+                    </AccordionContent>
+                  </div>
+                </AccordionItem>
+
+                <AccordionItem value="item-2-3">
+                  <AccordionTrigger className="mt-1 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
+                    กลุ่ม
+                  </AccordionTrigger>
+                  <div className="relative">
+                    <AccordionContent className="pb-0 ps-8 pt-0">
+                      <Separator
+                        orientation="vertical"
+                        className="absolute bottom-0 start-4 h-full"
+                      />
+
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        ชาย
+                      </Button>
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        หญิง
+                      </Button>
+                      <Button
+                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
+                        variant="ghost"
+                        onClick={() => setNavOpen((prev) => !prev)}
+                      >
+                        ผสม
+                      </Button>
+                    </AccordionContent>
+                  </div>
+                </AccordionItem>
+
                 <Button
                   className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 1
-                </Button>
-                <Button
-                  className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                  variant="ghost"
-                  onClick={() => setNavOpen((prev) => !prev)}
-                >
-                  Item 2
-                </Button>
-                <Button
-                  className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                  variant="ghost"
-                  onClick={() => setNavOpen((prev) => !prev)}
-                >
-                  Item 3
-                </Button>
-                <Button
-                  className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                  variant="ghost"
-                  onClick={() => setNavOpen((prev) => !prev)}
-                >
-                  Item 4
+                  วงดนตรี
                 </Button>
               </AccordionContent>
             </div>
@@ -116,28 +198,28 @@ export default function HamburgerMenu({
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 1
+                  เพลง
                 </Button>
                 <Button
                   className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 2
+                  วิดีโอ
                 </Button>
                 <Button
                   className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 3
+                  รูปภาพ
                 </Button>
                 <Button
                   className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 4
+                  รายการโทรทัศน์/ออนไลน์
                 </Button>
               </AccordionContent>
             </div>
@@ -159,36 +241,28 @@ export default function HamburgerMenu({
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 1
+                  งานอีเวนต์
                 </Button>
                 <Button
                   className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
                   variant="ghost"
                   onClick={() => setNavOpen((prev) => !prev)}
                 >
-                  Item 2
-                </Button>
-                <Button
-                  className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                  variant="ghost"
-                  onClick={() => setNavOpen((prev) => !prev)}
-                >
-                  Item 3
-                </Button>
-                <Button
-                  className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                  variant="ghost"
-                  onClick={() => setNavOpen((prev) => !prev)}
-                >
-                  Item 4
+                  คอนเสิร์ต
                 </Button>
               </AccordionContent>
             </div>
           </AccordionItem>
 
           <AccordionItem value="item-5">
-            <AccordionTrigger className="chevronDownDisable rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
+            <AccordionTrigger className="chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
               ปฏิทิน
+            </AccordionTrigger>
+          </AccordionItem>
+
+          <AccordionItem value="item-6">
+            <AccordionTrigger className="chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
+              ชุมชนแฟนคลับ
             </AccordionTrigger>
           </AccordionItem>
         </Accordion>

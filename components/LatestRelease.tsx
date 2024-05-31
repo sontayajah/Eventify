@@ -3,10 +3,9 @@
 import React from "react";
 import Image from "next/image";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import { ChevronsRight } from "lucide-react";
+import { ChevronsRight, Sparkle } from "lucide-react";
 
 export default function LatestRelease() {
   return (
@@ -15,7 +14,9 @@ export default function LatestRelease() {
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
           ผลงานใหม่
         </h4>
-        <Badge className="hover:cursor-pointer">ใหม่</Badge>
+        <div className="flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 transition-colors duration-300 hover:bg-green-600 hover:text-green-100">
+          ใหม่ <Sparkle width={12} height={12} />
+        </div>
       </div>
 
       <div className="flex h-full flex-col">

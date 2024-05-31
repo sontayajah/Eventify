@@ -1,12 +1,8 @@
 "use client";
 
-import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
-import { ChevronsRight, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { ChevronsRight } from "lucide-react";
 import LatestPostCard from "./LatestPostCard";
 
 export default function LatestPosts() {
@@ -15,29 +11,12 @@ export default function LatestPosts() {
       <div>
         <div className="flex items-center gap-2">
           <h2 className="scroll-m-20 text-xl font-semibold tracking-tight first:mt-0 lg:text-3xl">
-            ประกาศล่าสุด
+            ข่าวสารล่าสุด
           </h2>
-          {/* <Image
-            src="/logo/twitter/logo-black.png"
-            alt="youtube logo"
-            width="1280"
-            height="720"
-            className="block size-3 dark:hidden lg:size-4"
-          />
-          <Image
-            src="/logo/twitter/logo-white.png"
-            alt="youtube logo"
-            width="1280"
-            height="720"
-            className="hidden size-3 dark:block lg:size-4"
-          />
-          <h2 className="scroll-m-20 text-xl font-semibold tracking-tight first:mt-0 lg:text-3xl">
-            ทางการ
-          </h2> */}
         </div>
 
         <div className="text-base text-muted-foreground lg:mt-1 lg:text-lg">
-          ข่าวสาร กิจกรรม และบทความต่าง ๆ
+          ประกาศ กิจกรรม และบทความต่าง ๆ
         </div>
       </div>
 
