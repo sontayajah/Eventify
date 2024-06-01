@@ -101,43 +101,7 @@ export default function HamburgerMenu({
                 </AccordionItem>
                 <AccordionItem value="item-2-2">
                   <AccordionTrigger className="mt-1 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
-                    คู่
-                  </AccordionTrigger>
-                  <div className="relative">
-                    <AccordionContent className="pb-0 ps-8 pt-0">
-                      <Separator
-                        orientation="vertical"
-                        className="absolute bottom-0 start-4 h-full"
-                      />
-
-                      <Button
-                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                        variant="ghost"
-                        onClick={() => setNavOpen((prev) => !prev)}
-                      >
-                        ชาย
-                      </Button>
-                      <Button
-                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                        variant="ghost"
-                        onClick={() => setNavOpen((prev) => !prev)}
-                      >
-                        หญิง
-                      </Button>
-                      <Button
-                        className="mt-0.5 block w-full text-left focus-visible:ring-transparent"
-                        variant="ghost"
-                        onClick={() => setNavOpen((prev) => !prev)}
-                      >
-                        ผสม
-                      </Button>
-                    </AccordionContent>
-                  </div>
-                </AccordionItem>
-
-                <AccordionItem value="item-2-3">
-                  <AccordionTrigger className="mt-1 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
-                    กลุ่ม
+                    คู่และกลุ่ม
                   </AccordionTrigger>
                   <div className="relative">
                     <AccordionContent className="pb-0 ps-8 pt-0">

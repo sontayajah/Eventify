@@ -9,20 +9,131 @@ import Link from "next/link";
 
 export default function LatestPostCard() {
   return (
-    <div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-2">
-      <div className="group flex flex-row items-center">
-        <div className="z-0 me-3 block h-[164px] w-24 flex-shrink-0 overflow-hidden rounded-3xl object-cover sm:mb-0 sm:me-6 sm:h-60 sm:w-36 lg:h-60 lg:w-44 xl:size-60">
-          <Link href="/news/bus-marckris-sarahsalola-live-session-vlog">
+    <div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3 xl:grid-cols-4">
+      {/* Card 1 */}
+      <div className="group flex flex-row-reverse md:block">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+          <Link href="/news/bus7_brother_zone_release_plan">
             <Image
-              src="/youtube-cover/marckris-sarahsalola-live-session.jpg"
-              alt="youtube logo"
+              src="/card-cover/bus7_brother_zone_release_plan.jpg"
+              alt="bus7 brother zone release plan"
               width="1280"
               height="720"
-              className="h-full w-full rounded-3xl object-cover transition-transform duration-500 group-hover:scale-110"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </Link>
         </div>
-        <div className="flex h-full flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal">
+        <div className="mt-0 flex flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal md:mt-4">
+          <div className="flex flex-wrap gap-1.5">
+            <Link
+              href="/artists/bus"
+              className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 transition-colors duration-300 hover:bg-blue-600 hover:text-blue-100"
+            >
+              BUS 🚌
+            </Link>
+          </div>
+
+          <Link
+            href="/news/bus-marckris-sarahsalola-live-session-vlog"
+            className="flex flex-col gap-3"
+          >
+            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`Hey! BUS7 ‘แค่น้องชาย (brother zone)’ RELEASE PLAN`}</div>
+
+            <div className="hidden sm:block">
+              <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
+                Hey! ‘แค่น้องชาย (brother zone)’ RELEASE PLAN RELEASE ON
+                05.06.2024 YouTube: TADA LABELS STAY TUNED ~ #BUS_แค่น้องชาย
+                #BUS7UNIT #BUSbecauseofyouishine #SONRAYMUSIC
+              </p>
+            </div>
+          </Link>
+          <div className="flex items-center">
+            <Link
+              href="/profile/bus"
+              className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
+            >
+              <Image
+                src="/logo/bus-logo.jpg"
+                alt="bus logo"
+                width="28"
+                height="28"
+                className="mr-2 size-5 rounded-full sm:size-7"
+              />
+              <div className="overflow-hidden truncate whitespace-normal">
+                <span className="line-clamp-1">
+                  BUS because of you i shine{" "}
+                </span>
+              </div>
+              <Image
+                src="/icons/verify-icons/verify-gold.png"
+                alt="verify icon"
+                width="16"
+                height="16"
+                className="ml-2"
+              />
+            </Link>
+          </div>
+
+          <div className="flex justify-between">
+            <div className="flex gap-1">
+              <div className="flex items-center text-xs leading-none transition-colors">
+                <Button
+                  variant="ghost"
+                  className="rounded-full focus-visible:ring-transparent"
+                  size="icon"
+                  title="แชร์โพสต์"
+                >
+                  <ExternalLink
+                    size={16}
+                    strokeWidth={1.5}
+                    className="size-5 rounded-full"
+                  />
+                </Button>
+                <span className="ms-2 min-w-[1.125rem] flex-shrink-0 text-start duration-100">
+                  0
+                </span>
+              </div>
+
+              <div className="flex items-center text-xs leading-none transition-colors">
+                <Button
+                  variant="ghost"
+                  className="rounded-full focus-visible:ring-transparent"
+                  size="icon"
+                  title="ถูกใจ"
+                >
+                  <Heart
+                    size={16}
+                    strokeWidth={1.5}
+                    className="size-5 rounded-full"
+                  />
+                </Button>
+                <span className="ms-2 min-w-[1.125rem] flex-shrink-0 text-start duration-100">
+                  0
+                </span>
+              </div>
+            </div>
+
+            <div className="flex min-w-max items-center text-xs leading-none text-muted-foreground transition-colors">
+              May 16, 2024
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Card 2 */}
+      <div className="group flex flex-row-reverse md:block">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+          <Link href="/news/bus-marckris-sarahsalola-live-session-vlog">
+            <Image
+              src="/youtube-cover/marckris-sarahsalola-live-session.jpg"
+              alt="marckris sarahsalola live session cover"
+              width="1280"
+              height="720"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </Link>
+        </div>
+        <div className="mt-0 flex flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal md:mt-4">
           <div className="flex flex-wrap gap-1.5">
             <Link
               href="/artists/bus"
@@ -50,7 +161,7 @@ export default function LatestPostCard() {
             href="/news/bus-marckris-sarahsalola-live-session-vlog"
             className="flex flex-col gap-3"
           >
-            <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg">{`MARCKRIS พาบุกกองถ่าย #sarahsalolaxMARCKRIS Live Session ✨`}</div>
+            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`MARCKRIS พาบุกกองถ่าย #sarahsalolaxMARCKRIS Live Session ✨`}</div>
 
             <div className="hidden sm:block">
               <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
@@ -63,7 +174,7 @@ export default function LatestPostCard() {
           </Link>
           <div className="flex items-center">
             <Link
-              href="/profiles/bus"
+              href="/profile/bus"
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
@@ -71,7 +182,7 @@ export default function LatestPostCard() {
                 alt="bus logo"
                 width="28"
                 height="28"
-                className="mr-2 size-5 rounded-full border sm:size-7"
+                className="mr-2 size-5 rounded-full sm:size-7"
               />
               <div className="overflow-hidden truncate whitespace-normal">
                 <span className="line-clamp-1">
@@ -83,20 +194,14 @@ export default function LatestPostCard() {
                 alt="verify icon"
                 width="16"
                 height="16"
-                className="ml-1"
+                className="ml-2"
               />
             </Link>
-            <span className="mx-[6px] font-medium text-neutral-500 dark:text-neutral-400">
-              ·
-            </span>
-            <div className="min-w-max text-xs text-muted-foreground">
-              May 16, 2024
-            </div>
           </div>
 
           <div className="flex justify-between">
             <div className="flex gap-1">
-              <div className="flex items-center text-xs leading-none  transition-colors">
+              <div className="flex items-center text-xs leading-none transition-colors">
                 <Button
                   variant="ghost"
                   className="rounded-full focus-visible:ring-transparent"
@@ -114,7 +219,7 @@ export default function LatestPostCard() {
                 </span>
               </div>
 
-              <div className="flex items-center text-xs leading-none  transition-colors">
+              <div className="flex items-center text-xs leading-none transition-colors">
                 <Button
                   variant="ghost"
                   className="rounded-full focus-visible:ring-transparent"
@@ -133,37 +238,27 @@ export default function LatestPostCard() {
               </div>
             </div>
 
-            <div className="flex items-center text-xs leading-none  transition-colors">
-              <Button
-                variant="ghost"
-                className="rounded-full focus-visible:ring-transparent"
-                size="icon"
-                title="บันทึก"
-              >
-                <Bookmark
-                  size={16}
-                  strokeWidth={1.5}
-                  className="size-5 rounded-full"
-                />
-              </Button>
+            <div className="flex min-w-max items-center text-xs leading-none text-muted-foreground transition-colors">
+              May 16, 2024
             </div>
           </div>
         </div>
       </div>
 
-      <div className="group flex flex-row items-center">
-        <div className="z-0 me-3 block h-[164px] w-24 flex-shrink-0 overflow-hidden rounded-3xl object-cover sm:mb-0 sm:me-6 sm:h-60 sm:w-36 lg:h-60 lg:w-44 xl:size-60">
+      {/* Card 3 */}
+      <div className="group flex flex-row-reverse md:block">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
           <Link href="/news/gotcha-pop-2-concert">
             <Image
               src="/card-cover/gotchapop2-concert.jpeg"
               alt="gotcha pop 2 concert cover"
               width="1280"
               height="720"
-              className="h-full w-full rounded-3xl object-cover transition-transform duration-500 group-hover:scale-110"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </Link>
         </div>
-        <div className="flex h-full flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal">
+        <div className="mt-0 flex flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal md:mt-4">
           <div className="flex flex-wrap gap-1.5">
             <Link
               href="/concerts"
@@ -177,7 +272,7 @@ export default function LatestPostCard() {
             href="/news/gotcha-pop-2-concert"
             className="flex flex-col gap-3"
           >
-            <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg">{`GOTCHA POP 2 CONCERT`}</div>
+            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`GOTCHA POP 2 CONCERT พบกับศิลปิน T-Pop ตัวแรงแห่งยุค`}</div>
 
             <div className="hidden sm:block">
               <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
@@ -195,7 +290,7 @@ export default function LatestPostCard() {
           </Link>
           <div className="flex items-center">
             <Link
-              href="/profiles/atimeshowbiz"
+              href="/profile/atimeshowbiz"
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
@@ -203,7 +298,7 @@ export default function LatestPostCard() {
                 alt="ATIMESHOWBIZ logo"
                 width="28"
                 height="28"
-                className="mr-2 size-5 rounded-full border sm:size-7"
+                className="mr-2 size-5 rounded-full sm:size-7"
               />
               <div className="overflow-hidden truncate whitespace-normal">
                 <span className="line-clamp-1">ATIMESHOWBIZ</span>
@@ -213,20 +308,14 @@ export default function LatestPostCard() {
                 alt="verify icon"
                 width="16"
                 height="16"
-                className="ml-1"
+                className="ml-2"
               />
             </Link>
-            <span className="mx-[6px] font-medium text-neutral-500 dark:text-neutral-400">
-              ·
-            </span>
-            <div className="min-w-max text-xs text-muted-foreground">
-              May 16, 2024
-            </div>
           </div>
 
           <div className="flex justify-between">
             <div className="flex gap-1">
-              <div className="flex items-center text-xs leading-none  transition-colors">
+              <div className="flex items-center text-xs leading-none transition-colors">
                 <Button
                   variant="ghost"
                   className="rounded-full focus-visible:ring-transparent"
@@ -244,7 +333,7 @@ export default function LatestPostCard() {
                 </span>
               </div>
 
-              <div className="flex items-center text-xs leading-none  transition-colors">
+              <div className="flex items-center text-xs leading-none transition-colors">
                 <Button
                   variant="ghost"
                   className="rounded-full focus-visible:ring-transparent"
@@ -263,19 +352,123 @@ export default function LatestPostCard() {
               </div>
             </div>
 
-            <div className="flex items-center text-xs leading-none  transition-colors">
-              <Button
-                variant="ghost"
-                className="rounded-full focus-visible:ring-transparent"
-                size="icon"
-                title="บันทึก"
-              >
-                <Bookmark
-                  size={16}
-                  strokeWidth={1.5}
-                  className="size-5 rounded-full"
-                />
-              </Button>
+            <div className="flex min-w-max items-center text-xs leading-none text-muted-foreground transition-colors">
+              May 16, 2024
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Card 4 */}
+      <div className="group flex flex-row-reverse md:block">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+          <Link href="/news/aim-hour-episode-khunpol-bus-postponed">
+            <Image
+              src="/card-cover/aim-hour-episode-khunpol-bus-postponed.jpg"
+              alt="aim hour episode khunpol bus postponed cover"
+              width="1280"
+              height="720"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </Link>
+        </div>
+        <div className="mt-0 flex flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal md:mt-4">
+          <div className="flex flex-wrap gap-1.5">
+            <Link
+              href="/artists/bus"
+              className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 transition-colors duration-300 hover:bg-blue-600 hover:text-blue-100"
+            >
+              BUS 🚌
+            </Link>
+          </div>
+
+          <Link
+            href="/news/aim-hour-episode-khunpol-bus-postponed"
+            className="flex flex-col gap-3"
+          >
+            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`เลื่อนการออกอากาศรายการ AIM HOUR Episode ขุนพล วง BUS`}</div>
+
+            <div className="hidden sm:block">
+              <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
+                สวัสดีค่ะ BEUS และแฟนคลับน้องขุนพลทุกคน ทางรายการ AIM HOUR
+                ต้องขออภัยอย่างสูงที่ต้องประกาศเลื่อนการออกอากาศรายการ AIM HOUR
+                Episode น้องขุนพล วง BUS ออกไป จากกำหนดเดิมคือวันที่ 1 มิถุนายน
+                เวลา 19:00 น. เป็นวันที่ 2 มิถุนายน เวลา 19:00 น. โดยทางทีม AIM
+                HOUR เสียใจอย่างยิ่งที่ทำให้แฟนคลับน้องขุนพล และวง BUS
+                ทุกคนที่รอชมคลิปวิดีโอต้องผิดหวังและรอนานกว่าที่ควร
+                ทีมงานต้องขออภัยอีกครั้งในความผิดพลาดครั้งนี้
+                รวมถึงขออภัยที่เพิ่งมาแจ้งแฟนคลับทุกคนอย่างกะทันหันด้วยนะคะ
+                #AIMHOURXKHUNPOL #KHUNPOL #BUSbecauseofyouishine #AIMHOUR
+                #สำนักข่าวทูเดย์
+              </p>
+            </div>
+          </Link>
+          <div className="flex items-center">
+            <Link
+              href="/profile/todayth"
+              className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
+            >
+              <Image
+                src="/logo/todayth.jpg"
+                alt="bus logo"
+                width="28"
+                height="28"
+                className="mr-2 size-5 rounded-full sm:size-7"
+              />
+              <div className="overflow-hidden truncate whitespace-normal">
+                <span className="line-clamp-1">TODAY</span>
+              </div>
+              <Image
+                src="/icons/verify-icons/verify-gold.png"
+                alt="verify icon"
+                width="16"
+                height="16"
+                className="ml-2"
+              />
+            </Link>
+          </div>
+
+          <div className="flex justify-between">
+            <div className="flex gap-1">
+              <div className="flex items-center text-xs leading-none transition-colors">
+                <Button
+                  variant="ghost"
+                  className="rounded-full focus-visible:ring-transparent"
+                  size="icon"
+                  title="แชร์โพสต์"
+                >
+                  <ExternalLink
+                    size={16}
+                    strokeWidth={1.5}
+                    className="size-5 rounded-full"
+                  />
+                </Button>
+                <span className="ms-2 min-w-[1.125rem] flex-shrink-0 text-start duration-100">
+                  0
+                </span>
+              </div>
+
+              <div className="flex items-center text-xs leading-none transition-colors">
+                <Button
+                  variant="ghost"
+                  className="rounded-full focus-visible:ring-transparent"
+                  size="icon"
+                  title="ถูกใจ"
+                >
+                  <Heart
+                    size={16}
+                    strokeWidth={1.5}
+                    className="size-5 rounded-full"
+                  />
+                </Button>
+                <span className="ms-2 min-w-[1.125rem] flex-shrink-0 text-start duration-100">
+                  0
+                </span>
+              </div>
+            </div>
+
+            <div className="flex min-w-max items-center text-xs leading-none text-muted-foreground transition-colors">
+              May 16, 2024
             </div>
           </div>
         </div>

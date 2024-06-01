@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
 import HamburgerMenu from "./HamburgerMenu";
-import IndexNavbarArtistsMenu from "./IndexNavbarArtistsMenu";
+import IndexNavbarMenuItem from "./IndexNavbarMenuItem";
 
 // Icons
 import { Menu } from "lucide-react";
@@ -39,7 +39,7 @@ export default function Navbar() {
             </div>
             <div className="mx-2 hidden h-8 border-l border-neutral-200 dark:border-neutral-700 lg:block"></div>
 
-            <IndexNavbarArtistsMenu />
+            <IndexNavbarMenuItem />
           </div>
           <div className="flex items-center gap-2">
             <ProfileDropdownMenu />

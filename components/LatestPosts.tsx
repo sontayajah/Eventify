@@ -16,7 +16,7 @@ export default function LatestPosts() {
         </div>
 
         <div className="text-base text-muted-foreground lg:mt-1 lg:text-lg">
-          ประกาศ กิจกรรม และบทความต่าง ๆ
+          ประกาศข่าวสาร กิจกรรม ผลงาน และบทความต่าง ๆ
         </div>
       </div>
 
@@ -27,7 +27,7 @@ export default function LatestPosts() {
           variant="link"
           className="h-min w-fit px-0 py-0 hover:text-primary/90 hover:no-underline dark:text-primary"
           onClick={() => {
-            window.open("http://localhost:3000/LatestPosts", "_blank");
+            window.open("/news", "_blank");
           }}
         >
           ดูเพิ่มเติม <ChevronsRight size={16} className="ml-0.5" />

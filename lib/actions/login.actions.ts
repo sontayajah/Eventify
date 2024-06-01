@@ -2,7 +2,7 @@
 import * as z from "zod";
 
 import { LoginSchema } from "@/lib/validator";
-
+import { signIn } from "next-auth/react";
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
 
@@ -10,5 +10,5 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     return { error: "Invalid Fields!" };
   }
 
-  return { success: "Email sent!" };
+  return { success: "Login Success" };
 };

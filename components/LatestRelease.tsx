@@ -35,7 +35,7 @@ export default function LatestRelease() {
               alt="youtube logo"
               width="1280"
               height="720"
-              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] rounded-xl py-3 transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
           </div>
@@ -72,7 +72,7 @@ export default function LatestRelease() {
               alt="youtube logo"
               width="1280"
               height="720"
-              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] rounded-xl py-3 transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
           </div>
@@ -109,7 +109,7 @@ export default function LatestRelease() {
               alt="youtube logo"
               width="1280"
               height="720"
-              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] rounded-xl py-3 transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
           </div>
@@ -143,7 +143,7 @@ export default function LatestRelease() {
               alt="youtube logo"
               width="1280"
               height="720"
-              className="h-20 max-h-[85px] w-28 max-w-[127px] py-3 transition-transform duration-500 group-hover:scale-110"
+              className="h-20 max-h-[85px] w-28 max-w-[127px] rounded-xl py-3 transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
           </div>
@@ -170,7 +170,7 @@ export default function LatestRelease() {
             variant="link"
             className="h-min w-fit px-0 py-0 hover:text-primary/90 hover:no-underline dark:text-primary"
             onClick={() => {
-              window.open("http://localhost:3000/LatestPosts", "_blank");
+              window.open("/latest-release", "_blank");
             }}
           >
             ดูเพิ่มเติม <ChevronsRight size={16} className="ml-0.5" />
