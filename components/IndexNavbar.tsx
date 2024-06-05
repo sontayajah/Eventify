@@ -9,8 +9,8 @@ import IndexNavbarMenuItem from "./IndexNavbarMenuItem";
 // import { useSession } from "next-auth/react";
 
 import IndexNavbarButton from "./IndexNavbarButton";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/authOptions";
 
 export default async function Navbar() {
   // const { data: session } = useSession();
