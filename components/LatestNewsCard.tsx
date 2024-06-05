@@ -4,22 +4,22 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 
-import { Bookmark, ExternalLink, Heart } from "lucide-react";
+import { ExternalLink, Heart } from "lucide-react";
 import Link from "next/link";
 
-export default function LatestPostCard() {
+export default function LatestNewsCard() {
   return (
     <div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3 xl:grid-cols-4">
       {/* Card 1 */}
       <div className="group flex flex-row-reverse md:block">
-        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover sm:h-60 md:ms-0 md:w-full">
           <Link href="/news/bus7_brother_zone_release_plan">
             <Image
-              src="/card-cover/bus7_brother_zone_release_plan.jpg"
+              src={"/card-cover/bus7_brother_zone_release_plan.jpg"}
               alt="bus7 brother zone release plan"
               width="1280"
               height="720"
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </Link>
         </div>
@@ -37,10 +37,10 @@ export default function LatestPostCard() {
             href="/news/bus-marckris-sarahsalola-live-session-vlog"
             className="flex flex-col gap-3"
           >
-            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`Hey! BUS7 ‘แค่น้องชาย (brother zone)’ RELEASE PLAN`}</div>
+            <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg md:min-h-14">{`Hey! BUS7 ‘แค่น้องชาย (brother zone)’ RELEASE PLAN`}</div>
 
             <div className="hidden sm:block">
-              <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
+              <p className="line-clamp-3 text-xs text-muted-foreground sm:text-sm">
                 Hey! ‘แค่น้องชาย (brother zone)’ RELEASE PLAN RELEASE ON
                 05.06.2024 YouTube: TADA LABELS STAY TUNED ~ #BUS_แค่น้องชาย
                 #BUS7UNIT #BUSbecauseofyouishine #SONRAYMUSIC
@@ -53,7 +53,7 @@ export default function LatestPostCard() {
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
-                src="/logo/bus-logo.jpg"
+                src={"/logo/bus-logo.jpg"}
                 alt="bus logo"
                 width="28"
                 height="28"
@@ -65,7 +65,7 @@ export default function LatestPostCard() {
                 </span>
               </div>
               <Image
-                src="/icons/verify-icons/verify-gold.png"
+                src={"/icons/verify-icons/verify-gold.png"}
                 alt="verify icon"
                 width="16"
                 height="16"
@@ -122,10 +122,10 @@ export default function LatestPostCard() {
 
       {/* Card 2 */}
       <div className="group flex flex-row-reverse md:block">
-        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover sm:h-60 md:ms-0 md:w-full">
           <Link href="/news/bus-marckris-sarahsalola-live-session-vlog">
             <Image
-              src="/youtube-cover/marckris-sarahsalola-live-session.jpg"
+              src={"/youtube-cover/marckris-sarahsalola-live-session.jpg"}
               alt="marckris sarahsalola live session cover"
               width="1280"
               height="720"
@@ -148,7 +148,7 @@ export default function LatestPostCard() {
             >
               Youtube{" "}
               <Image
-                src="/logo/yt_icon_rgb.png"
+                src={"/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
                 width={16}
                 height={16}
@@ -161,10 +161,10 @@ export default function LatestPostCard() {
             href="/news/bus-marckris-sarahsalola-live-session-vlog"
             className="flex flex-col gap-3"
           >
-            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`MARCKRIS พาบุกกองถ่าย #sarahsalolaxMARCKRIS Live Session ✨`}</div>
+            <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg md:min-h-14">{`MARCKRIS พาบุกกองถ่าย #sarahsalolaxMARCKRIS Live Session ✨`}</div>
 
             <div className="hidden sm:block">
-              <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
+              <p className="line-clamp-3 text-xs text-muted-foreground sm:text-sm">
                 บรรยากาศในกองเป็นยังไงบ้าง ตามมาดู VLOG นี้กันได้เลย :
                 https://youtu.be/jl8BzlE5sfU
                 แล้วอย่าลืมไปฟังเพลงจากมาร์คคริสและพี่ซาร่าห์กันด้วยนะครับ🤍
@@ -178,7 +178,7 @@ export default function LatestPostCard() {
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
-                src="/logo/bus-logo.jpg"
+                src={"/logo/bus-logo.jpg"}
                 alt="bus logo"
                 width="28"
                 height="28"
@@ -190,7 +190,7 @@ export default function LatestPostCard() {
                 </span>
               </div>
               <Image
-                src="/icons/verify-icons/verify-gold.png"
+                src={"/icons/verify-icons/verify-gold.png"}
                 alt="verify icon"
                 width="16"
                 height="16"
@@ -247,10 +247,10 @@ export default function LatestPostCard() {
 
       {/* Card 3 */}
       <div className="group flex flex-row-reverse md:block">
-        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover sm:h-60 md:ms-0 md:w-full">
           <Link href="/news/gotcha-pop-2-concert">
             <Image
-              src="/card-cover/gotchapop2-concert.jpeg"
+              src={"/card-cover/gotchapop2-concert.jpeg"}
               alt="gotcha pop 2 concert cover"
               width="1280"
               height="720"
@@ -272,10 +272,12 @@ export default function LatestPostCard() {
             href="/news/gotcha-pop-2-concert"
             className="flex flex-col gap-3"
           >
-            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`GOTCHA POP 2 CONCERT พบกับศิลปิน T-Pop ตัวแรงแห่งยุค`}</div>
+            <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg md:min-h-14">
+              การรวมศิลปิน T-POP ตัวท็อปแห่งยุคในคอนเสิร์ต GOTCHA POP 2 Concert
+            </div>
 
             <div className="hidden sm:block">
-              <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
+              <p className="line-clamp-3 text-xs text-muted-foreground sm:text-sm">
                 กลับมาส่งความสนุก ความมันส์แบบจัดเต็มกันอีกครั้งกับคอนเสิร์ต
                 GOTCHA POP 2 CONCERT
                 หลังจากที่เมื่อปีที่ผ่านมาสร้างความประทับใจให้กับผู้เข้าชมคอนเสิร์ตกันเป็นอย่างดีแล้ว
@@ -294,7 +296,7 @@ export default function LatestPostCard() {
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
-                src="/logo/ATIMESHOWBIZ.jpg"
+                src={"/logo/ATIMESHOWBIZ.jpg"}
                 alt="ATIMESHOWBIZ logo"
                 width="28"
                 height="28"
@@ -304,7 +306,7 @@ export default function LatestPostCard() {
                 <span className="line-clamp-1">ATIMESHOWBIZ</span>
               </div>
               <Image
-                src="/icons/verify-icons/verify-gold.png"
+                src={"/icons/verify-icons/verify-gold.png"}
                 alt="verify icon"
                 width="16"
                 height="16"
@@ -361,10 +363,10 @@ export default function LatestPostCard() {
 
       {/* Card 4 */}
       <div className="group flex flex-row-reverse md:block">
-        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover md:ms-0 md:h-60 md:w-full">
+        <div className="z-0 ms-4 block h-40 w-1/3 flex-shrink-0 overflow-hidden rounded-xl object-cover sm:h-60 md:ms-0 md:w-full">
           <Link href="/news/aim-hour-episode-khunpol-bus-postponed">
             <Image
-              src="/card-cover/aim-hour-episode-khunpol-bus-postponed.jpg"
+              src={"/card-cover/aim-hour-episode-khunpol-bus-postponed.jpg"}
               alt="aim hour episode khunpol bus postponed cover"
               width="1280"
               height="720"
@@ -386,10 +388,10 @@ export default function LatestPostCard() {
             href="/news/aim-hour-episode-khunpol-bus-postponed"
             className="flex flex-col gap-3"
           >
-            <div className="line-clamp-2 min-h-14 text-sm font-semibold hover:text-primary sm:text-lg">{`เลื่อนการออกอากาศรายการ AIM HOUR Episode ขุนพล วง BUS`}</div>
+            <div className="line-clamp-2 text-sm font-semibold hover:text-primary sm:text-lg md:min-h-14">{`เลื่อนการออกอากาศรายการ AIM HOUR Episode ขุนพล วง BUS`}</div>
 
             <div className="hidden sm:block">
-              <p className="line-clamp-2 text-xs text-muted-foreground sm:text-sm">
+              <p className="line-clamp-3 text-xs text-muted-foreground sm:text-sm">
                 สวัสดีค่ะ BEUS และแฟนคลับน้องขุนพลทุกคน ทางรายการ AIM HOUR
                 ต้องขออภัยอย่างสูงที่ต้องประกาศเลื่อนการออกอากาศรายการ AIM HOUR
                 Episode น้องขุนพล วง BUS ออกไป จากกำหนดเดิมคือวันที่ 1 มิถุนายน
@@ -409,7 +411,7 @@ export default function LatestPostCard() {
               className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
             >
               <Image
-                src="/logo/todayth.jpg"
+                src={"/logo/todayth.jpg"}
                 alt="bus logo"
                 width="28"
                 height="28"
@@ -419,7 +421,7 @@ export default function LatestPostCard() {
                 <span className="line-clamp-1">TODAY</span>
               </div>
               <Image
-                src="/icons/verify-icons/verify-gold.png"
+                src={"/icons/verify-icons/verify-gold.png"}
                 alt="verify icon"
                 width="16"
                 height="16"

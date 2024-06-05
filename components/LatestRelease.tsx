@@ -19,7 +19,11 @@ export default function LatestRelease() {
         </div>
       </div>
 
-      <div className="flex h-full flex-col">
+      <div className="block text-base text-muted-foreground lg:mt-1 lg:hidden lg:text-lg">
+        อัพเดทล่าสุดเกี่ยวกับผลงานใหม่จากศิลปิน
+      </div>
+
+      <div className="mt-4 flex h-full flex-col lg:mt-0">
         <div
           className="group flex h-1/4 max-h-[85px] items-center gap-2 rounded-sm bg-card px-4 text-card-foreground transition-all hover:cursor-pointer hover:bg-accent"
           onClick={() => {
@@ -31,7 +35,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src="/youtube-cover/bus-nmtw-reaction.jpg"
+              src={"/youtube-cover/bus-nmtw-reaction.jpg"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -39,18 +43,18 @@ export default function LatestRelease() {
               loading="lazy"
             />
           </div>
-          <div className="w-full overflow-hidden truncate whitespace-normal">
+          <div className="w-full">
             <small className="line-clamp-2 text-sm font-semibold">
               {`[BUS REACTION] BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src="/logo/yt_icon_rgb.png"
+                src={"/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
-                width="16"
-                height="16"
+                width={16}
+                height={16}
               />
-              <p className="flex items-center text-sm text-muted-foreground">
+              <p className="line-clamp-1 text-sm text-muted-foreground">
                 BUS because of you i shine
               </p>
             </div>
@@ -68,7 +72,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src="/youtube-cover/bus-nmtw-artist-ver.jpg"
+              src={"/youtube-cover/bus-nmtw-artist-ver.jpg"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -76,18 +80,18 @@ export default function LatestRelease() {
               loading="lazy"
             />
           </div>
-          <div className="w-full overflow-hidden truncate whitespace-normal">
+          <div className="w-full">
             <small className="line-clamp-2 text-sm font-semibold">
               {`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' (Artist version)`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src="/logo/yt_icon_rgb.png"
+                src={"/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
-                width="16"
-                height="16"
+                width={16}
+                height={16}
               />
-              <p className="flex items-center text-sm text-muted-foreground">
+              <p className="line-clamp-1 text-sm text-muted-foreground">
                 TADA LABELS
               </p>
             </div>
@@ -105,7 +109,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src="/youtube-cover/bus-nmtw.webp"
+              src={"/youtube-cover/bus-nmtw.webp"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -113,18 +117,18 @@ export default function LatestRelease() {
               loading="lazy"
             />
           </div>
-          <div className="w-full overflow-hidden truncate whitespace-normal">
+          <div className="w-full">
             <small className="line-clamp-2 text-sm font-semibold">
               {`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src="/logo/yt_icon_rgb.png"
+                src={"/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
-                width="16"
-                height="16"
+                width={16}
+                height={16}
               />
-              <p className="flex items-center text-sm text-muted-foreground">
+              <p className="line-clamp-1 text-sm text-muted-foreground">
                 TADA LABELS
               </p>
             </div>
@@ -139,7 +143,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src="/youtube-cover/bus5-marckris-Introduction.jpg"
+              src={"/youtube-cover/bus5-marckris-Introduction.jpg"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -147,18 +151,18 @@ export default function LatestRelease() {
               loading="lazy"
             />
           </div>
-          <div className="w-full overflow-hidden truncate whitespace-normal">
+          <div className="w-full">
             <small className="line-clamp-2 text-sm font-semibold">
               {`BUS5 Member Introduction - MARCKRIS`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src="/logo/yt_icon_rgb.png"
+                src={"/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
-                width="16"
-                height="16"
+                width={16}
+                height={16}
               />
-              <p className="flex items-center text-sm text-muted-foreground">
+              <p className="line-clamp-1 text-sm text-muted-foreground">
                 BUS because of you i shine
               </p>
             </div>

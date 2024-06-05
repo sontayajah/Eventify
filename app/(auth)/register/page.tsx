@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,15 +18,19 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { RegisterSchema } from "@/lib/validator";
-import { useState, useTransition } from "react";
+import { useState } from "react";
 
-import { register } from "@/lib/actions/register.actions";
 import FormError from "@/components/FormError";
+import FormSuccess from "@/components/FormSuccess";
+import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
   const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
 
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -37,14 +42,40 @@ export default function RegisterPage() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof RegisterSchema>) {
+  async function onSubmit(values: z.infer<typeof RegisterSchema>) {
     setError("");
+    setIsPending(true);
 
-    startTransition(() => {
-      register(values).then((data) => {
-        setError(data.error);
-      });
+    const validatedFields = RegisterSchema.safeParse(values);
+
+    if (!validatedFields.success) {
+      return setError(error);
+    }
+
+    const response = await fetch("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify({
+        username: values.username,
+        password: values.password,
+        email: values.email,
+      }),
     });
+
+    const data = await response.json();
+    setIsPending(false);
+
+    if (!data.success) {
+      return setError(data.message);
+    }
+
+    await signIn("credentials", {
+      username: values.username,
+      password: values.password,
+      redirect: false,
+    });
+
+    router.push("/");
+    router.refresh();
   }
 
   return (
@@ -135,6 +166,7 @@ export default function RegisterPage() {
           />
 
           <FormError message={error} />
+          <FormSuccess message={success} />
 
           <Button type="submit" className="w-full" disabled={isPending}>
             สมัครสมาชิก

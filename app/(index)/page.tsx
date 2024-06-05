@@ -1,6 +1,8 @@
 import Carousel from "@/components/Carousel";
-import LatestPosts from "@/components/LatestPosts";
+import FanCommunity from "@/components/FanCommunity";
+import LatestNews from "@/components/LatestNews";
 import LatestRelease from "@/components/LatestRelease";
+import TrendingArtists from "@/components/TrendingArtists";
 
 export default function Home() {
   return (
@@ -9,7 +11,9 @@ export default function Home() {
         <Carousel />
         <LatestRelease />
       </div>
-      <LatestPosts />
+      <TrendingArtists />
+      <LatestNews />
+      <FanCommunity />
     </main>
   );
 }

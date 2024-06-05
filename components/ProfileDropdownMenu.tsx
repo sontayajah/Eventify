@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   DropdownMenu,
@@ -18,8 +19,12 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 export default function ProfileDropdownMenu() {
   const { setTheme, theme, systemTheme } = useTheme();
+  const { data: session } = useSession();
 
   return (
     <>
@@ -38,20 +43,24 @@ export default function ProfileDropdownMenu() {
           <DropdownMenuLabel className="text-base">
             บัญชีของฉัน
           </DropdownMenuLabel>
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Link href="/login" className="flex flex-grow text-base">
-                <Fingerprint className="mr-4 h-6 w-6" />
-                เข้าสู่ระบบ
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href="/register" className="flex flex-grow text-base">
-                <UserPlus className="mr-4 h-6 w-6" />
-                สมัครสมาชิก
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
+          {!session && (
+            <>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Link href="/login" className="flex flex-grow text-base">
+                    <Fingerprint className="mr-4 h-6 w-6" />
+                    เข้าสู่ระบบ
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/register" className="flex flex-grow text-base">
+                    <UserPlus className="mr-4 h-6 w-6" />
+                    สมัครสมาชิก
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </>
+          )}
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <div className="relative cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
@@ -75,10 +84,14 @@ export default function ProfileDropdownMenu() {
                 />
               </div>
             </div>
-            <DropdownMenuItem>
-              <LogOut className="mr-4 h-6 w-6" />
-              <span className="text-base">ออกจากระบบ</span>
-            </DropdownMenuItem>
+            {session && (
+              <>
+                <DropdownMenuItem onClick={() => signOut()}>
+                  <LogOut className="mr-4 h-6 w-6" />
+                  <span className="text-base">ออกจากระบบ</span>
+                </DropdownMenuItem>
+              </>
+            )}
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>

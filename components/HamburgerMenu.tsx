@@ -218,15 +218,15 @@ export default function HamburgerMenu({
             </div>
           </AccordionItem>
 
-          <AccordionItem value="item-5">
-            <AccordionTrigger className="chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
-              ปฏิทิน
-            </AccordionTrigger>
-          </AccordionItem>
-
           <AccordionItem value="item-6">
             <AccordionTrigger className="chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
               ชุมชนแฟนคลับ
+            </AccordionTrigger>
+          </AccordionItem>
+
+          <AccordionItem value="item-5">
+            <AccordionTrigger className="chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
+              ปฏิทิน
             </AccordionTrigger>
           </AccordionItem>
         </Accordion>

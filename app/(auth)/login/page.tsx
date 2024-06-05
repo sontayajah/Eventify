@@ -20,15 +20,18 @@ import { LoginSchema } from "@/lib/validator";
 import FormError from "@/components/FormError";
 import FormSuccess from "@/components/FormSuccess";
 
-import { login } from "@/lib/actions/login.actions";
+import { signIn } from "next-auth/react";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
 
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -38,16 +41,32 @@ export default function LoginPage() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof LoginSchema>) {
+  async function onSubmit(values: z.infer<typeof LoginSchema>) {
     setError("");
     setSuccess("");
 
-    startTransition(() => {
-      login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      });
+    setIsPending(true);
+
+    const validatedFields = LoginSchema.safeParse(values);
+
+    if (!validatedFields.success) {
+      return setError(error);
+    }
+
+    const response = await signIn("credentials", {
+      username: values.username,
+      password: values.password,
+      redirect: false,
     });
+
+    setIsPending(false);
+
+    if (!response?.ok) {
+      return setError("Username or password incorrect.");
+    }
+
+    router.push("/");
+    router.refresh();
   }
 
   return (

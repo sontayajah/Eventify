@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -59,7 +61,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/soloist/male"
                     >
                       <Image
-                        src="/artists/jeffsatur.png"
+                        src={"/artists/jeffsatur.png"}
                         alt="artist jeff satur image"
                         width="1280"
                         height="720"
@@ -76,7 +78,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/soloist/female"
                     >
                       <Image
-                        src="/artists/milli.png"
+                        src={"/artists/milli.png"}
                         alt="artist milli image"
                         width="1280"
                         height="720"
@@ -109,7 +111,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/groups/male"
                     >
                       <Image
-                        src="/artists/bus.png"
+                        src={"/artists/bus.png"}
                         alt="artist bus image"
                         width="1280"
                         height="720"
@@ -126,7 +128,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/groups/female"
                     >
                       <Image
-                        src="/artists/4eve.png"
+                        src={"/artists/4eve.png"}
                         alt="artist 4eve image"
                         width="1280"
                         height="720"
@@ -143,7 +145,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/groups/co-ed"
                     >
                       <Image
-                        src="/artists/bamm.png"
+                        src={"/artists/bamm.png"}
                         alt="artist bamm image"
                         width="1280"
                         height="720"
@@ -177,7 +179,7 @@ export default function IndexNavbarArtistsMenu() {
                     >
                       <div className="flex w-full gap-8">
                         <Image
-                          src="/artists/threemandown.png"
+                          src={"/artists/threemandown.png"}
                           alt="artist three man down image"
                           width="1280"
                           height="720"
@@ -227,7 +229,7 @@ export default function IndexNavbarArtistsMenu() {
                   </div>
                   <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                     คลิปวิดีโอต่าง ๆ ของศิลปิน เช่น มิวสิกวิดีโอ,
-                    วิดีโอเบื้องหลังการถ่ายทำ, Vlog, Live Session
+                    วิดีโอเบื้องหลังการถ่ายทำ, ไลฟ์, Vlog, Live Session
                   </p>
                 </a>
               </li>
@@ -304,18 +306,6 @@ export default function IndexNavbarArtistsMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/calender" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={cn(
-                navigationMenuTriggerStyle(),
-                "bg-inherit text-sm font-semibold hover:bg-inherit hover:text-primary focus:bg-inherit focus:text-primary focus:outline-none",
-              )}
-            >
-              ปฏิทิน
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
           <Link href="/community" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
@@ -324,6 +314,18 @@ export default function IndexNavbarArtistsMenu() {
               )}
             >
               ชุมชนแฟนคลับ
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/calender" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "bg-inherit text-sm font-semibold hover:bg-inherit hover:text-primary focus:bg-inherit focus:text-primary focus:outline-none",
+              )}
+            >
+              ปฏิทิน
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

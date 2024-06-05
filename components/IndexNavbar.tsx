@@ -1,20 +1,20 @@
-"use client";
-
-import React, { useState } from "react";
 import Link from "next/link";
 
 // Components
-import { Button } from "@/components/ui/button";
 
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
-import HamburgerMenu from "./HamburgerMenu";
+
 import IndexNavbarMenuItem from "./IndexNavbarMenuItem";
 
-// Icons
-import { Menu } from "lucide-react";
+// import { useSession } from "next-auth/react";
 
-export default function Navbar() {
-  const [navOpen, setNavOpen] = useState(false);
+import IndexNavbarButton from "./IndexNavbarButton";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth/next";
+
+export default async function Navbar() {
+  // const { data: session } = useSession();
+  const session = await getServerSession(authOptions);
 
   return (
     <>
@@ -22,14 +22,7 @@ export default function Navbar() {
         <nav className="mx-auto flex justify-between px-4 py-4 sm:container">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="focus-visible:ring-transparent lg:hidden"
-                onClick={() => setNavOpen((prev) => !prev)}
-              >
-                <Menu />
-              </Button>
+              <IndexNavbarButton />
 
               <Link href="/" className="flex items-center gap-2">
                 <span className="logo mt-0.5 text-xl font-bold tracking-tight">
@@ -42,20 +35,17 @@ export default function Navbar() {
             <IndexNavbarMenuItem />
           </div>
           <div className="flex items-center gap-2">
+            {session?.user && (
+              <>
+                <span>สวัสดี!</span>
+                <span className="font-semibold">{session.user.username}</span>
+              </>
+            )}
+
             <ProfileDropdownMenu />
           </div>
         </nav>
       </header>
-
-      <div className="relative z-50 lg:hidden">
-        {navOpen ? (
-          <div
-            className="fixed inset-0 bg-neutral-900 bg-opacity-50 opacity-100"
-            onClick={() => setNavOpen(false)}
-          ></div>
-        ) : null}
-        <HamburgerMenu navOpen={navOpen} setNavOpen={setNavOpen} />
-      </div>
     </>
   );
 }
