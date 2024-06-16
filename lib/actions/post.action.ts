@@ -104,7 +104,7 @@ export async function getAllPosts(props: GetAllPostsProps) {
     },
   });
 
-  return posts;
+  return posts as Post[];
 }
 
 interface CreatePostProps {
