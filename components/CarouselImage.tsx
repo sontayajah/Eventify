@@ -1,9 +1,8 @@
-import Image, { StaticImageData } from "next/image";
+// External libraries
+import Image from "next/image";
 
-interface carouselImageProps {
-  src: StaticImageData;
-  alt: string;
-}
+// Types
+import { carouselImageProps } from "@/types";
 
 export default function CarouselImage(props: carouselImageProps) {
   const { src, alt } = props;
@@ -18,6 +17,7 @@ export default function CarouselImage(props: carouselImageProps) {
       style={{
         objectFit: "cover",
       }}
+      priority={true}
     />
   );
 }

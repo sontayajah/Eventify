@@ -1,0 +1,228 @@
+.prose {
+  blockquote {
+    padding-left: 1rem;
+    border-left: 4px solid #7c3aed;
+    margin-left: revert;
+  }
+}
+
+.bubble-menu {
+  display: flex;
+  background-color: #050c20;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+
+  button {
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    opacity: 0.6;
+
+    &:hover,
+    &.is-active {
+      opacity: 1;
+    }
+  }
+}
+
+.dark .bubble-menu {
+  background-color: #ffffff;
+
+  button {
+    color: #050c20;
+  }
+}
+
+.tiptap-bar .menu-item {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.tiptap-bar-parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tiptap-bar-parent > div {
+  width: 800px;
+}
+
+.mobile .tiptap-bar-parent {
+  width: 100%;
+  padding: 0;
+  justify-content: initial;
+}
+
+.dark .tiptap-bar .menu-item,
+.dark .tiptap-bar-trigger .menu-item {
+  --tw-bg-opacity: 1;
+  background-color: #050c20;
+  --tw-text-opacity: 1;
+  color: #ffffff;
+}
+
+.tiptap-bar .menu-item.is-active,
+.tiptap-bar .menu-item:hover,
+.tiptap-bar-trigger .menu-item.is-active,
+.tiptap-bar-trigger .menu-item:hover {
+  --tw-bg-opacity: 1;
+  background-color: #efe8fd;
+  --tw-text-opacity: 1;
+  color: #3c0d8c;
+}
+
+.dark .tiptap-bar .menu-item.is-active,
+.dark .tiptap-bar .menu-item:hover,
+.dark .tiptap-bar-trigger .menu-item.is-active,
+.dark .tiptap-bar-trigger .menu-item:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(220, 14.3%, 95.9%);
+  --tw-text-opacity: 1;
+  color: #3c0d8c;
+}
+
+.tiptap-bar {
+  background-color: rgb(245 245 245);
+  padding: 1.25rem;
+}
+
+.dark .tiptap-bar,
+.dark .tiptap-bar-parent {
+  background-color: #050c20;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  font-size: larger;
+}
+
+.tiptap.ProseMirror {
+  min-height: 400px;
+  margin-top: 3rem;
+}
+
+.tiptap-bar-trigger {
+  width: 100%;
+  background-color: rgb(245 245 245);
+  padding: 0.5rem;
+}
+
+.dark .tiptap-bar-trigger,
+.dark .tiptap-bar-trigger-button {
+  background-color: #050c20;
+}
+
+.tiptap-bar-trigger .menu-item {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+div:has(> .tiptap-bar-parent) {
+  background-color: rgb(245 245 245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+
+div:has(.normal.tiptap-menubar-container) {
+  position: sticky;
+  top: 67px;
+  z-index: 40;
+}
+
+div:has(.mobile.tiptap-menubar-container) {
+  position: sticky;
+  top: 72px;
+  z-index: 40;
+}
+
+.tiptap-bar-trigger-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiptap-bar-trigger-button .menu-item {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.tiptap-bar-trigger-button .menu-item.is-active,
+.tiptap-bar-trigger-button .menu-item:hover {
+  --tw-bg-opacity: 1;
+  background-color: #efe8fd;
+  --tw-text-opacity: 1;
+  color: #3c0d8c;
+}
+
+.dark .tiptap-bar-trigger-button .menu-item.is-active,
+.dark .tiptap-bar-trigger-button .menu-item:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(220, 14.3%, 95.9%);
+  --tw-text-opacity: 1;
+  color: #3c0d8c;
+}
+
+.mobile.tiptap-menubar-container {
+  display: block;
+}
+
+.mobile.tiptap-menubar-container {
+  padding: 0 0.5rem;
+}
+
+/* Styles for screens 1024px and larger */
+@media (min-width: 1024px) {
+  /* Hide mobile menu bar container */
+  .tiptap-menubar-container.mobile {
+    display: none;
+  }
+
+  /* Ensure popper content with a specific child is displayed */
+  div[data-radix-popper-content-wrapper]:has(div.tiptap-bar-trigger) {
+    display: flex;
+  }
+}
+
+/* Styles for screens smaller than 1024px */
+@media (max-width: 1023px) {
+  /* Set maximum width for mobile menu bar container */
+  .tiptap-menubar-container.mobile {
+    max-width: 1023px;
+  }
+
+  .dark .tiptap-menubar-container.mobile {
+    background-color: #050c20;
+  }
+
+  /* Ensure the parent container can scroll */
+  .tiptap-menubar-container.mobile .tiptap-bar-parent {
+    overflow: auto;
+  }
+
+  /* Remove padding and gap from mobile menu bar */
+  .tiptap-menubar-container.mobile .tiptap-bar-parent .tiptap-bar {
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Hide normal menu bar container */
+  .tiptap-menubar-container.normal {
+    display: none;
+  }
+
+  /* Ensure popper content with a specific child is hidden */
+  div[data-radix-popper-content-wrapper]:has(div.tiptap-bar-trigger) {
+    display: none;
+  }
+}

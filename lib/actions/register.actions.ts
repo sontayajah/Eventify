@@ -1,9 +1,9 @@
 "use server";
 import * as z from "zod";
+import bcrypt from "bcryptjs";
+import db from "@/lib/prisma";
 
 import { RegisterSchema } from "@/lib/validator";
-
-import db from "@/lib/prisma";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
@@ -12,15 +12,36 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: "Invalid Fields!" };
   }
 
-  const { username } = validatedFields.data;
-
   const existingUser = await db.user.findUnique({
-    where: { username },
+    where: { username: values.username },
   });
 
   if (existingUser) {
-    return { error: "Username already in use!" };
+    return {
+      success: false,
+      message: "Username already in use!",
+    };
   }
 
-  return { success: "User Created!" };
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(values.password, salt);
+
+  const user = await db.user.create({
+    data: {
+      username: values.username,
+      password: hashedPassword,
+      email: values.email,
+    },
+  });
+
+  await db.profile.create({
+    data: {
+      userId: user.id,
+      displayName: user.username,
+      isVerified: false,
+      verifyTypeId: "0",
+    },
+  });
+
+  return { success: true, message: "User Data Successfully Created!" };
 };

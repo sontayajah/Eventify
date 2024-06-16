@@ -10,48 +10,84 @@ datasource db {
     directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model Account {
-    id            String  @id @default(cuid())
-    userId        String  @map("user_id")
-    verifiedType  String
-    refresh_token String? @db.Text
-    access_token  String? @db.Text
-    expires_at    Int?
-    token_type    String?
-    id_token      String? @db.Text
-    session_state String?
-
-    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-    @@map("accounts")
-}
-
-model Session {
-    id           String   @id @default(cuid())
-    sessionToken String   @unique @map("session_token")
-    userId       String   @map("user_id")
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-    @@map("sessions")
-}
-
 model User {
-    id       String    @id @default(cuid())
+    id       String @id @default(cuid())
     email    String
-    username String    @unique
-    password String    @db.Text
-    accounts Account[]
-    sessions Session[]
+    username String @unique
+    password String @db.Text
+
+    createdAt DateTime? @default(now()) @map("created_at")
+    updatedAt DateTime? @updatedAt @map("updated_at")
+
+    profile Profile?
+    posts   Post[]
 
     @@map("users")
 }
 
-model VerificationToken {
-    identifier String
-    token      String
-    expires    DateTime
+model Profile {
+    id           String  @id @default(cuid())
+    userId       String  @unique @map("user_id")
+    displayName  String  @map("display_name")
+    isVerified   Boolean @default(false) @map("is_verified")
+    verifyTypeId String  @default("0") @map("verify_type_id")
+    imageUrl     String? @map("image_url") @db.VarChar(255)
 
-    @@unique([identifier, token])
-    @@map("verificationtokens")
+    createdAt DateTime? @default(now()) @map("created_at")
+    updatedAt DateTime? @updatedAt @map("updated_at")
+
+    user       User       @relation(fields: [userId], references: [id])
+    verifyType VerifyType @relation(fields: [verifyTypeId], references: [verifyId])
+
+    @@map("profiles")
+}
+
+model VerifyType {
+    id       String @id @default(cuid())
+    verifyId String @unique
+    type     String
+
+    createdAt DateTime? @default(now()) @map("created_at")
+    updatedAt DateTime? @updatedAt @map("updated_at")
+
+    profiles Profile[]
+
+    @@map("verify_types")
+}
+
+model Post {
+    id          String   @id @default(cuid())
+    title       String   @db.VarChar(255)
+    content     String   @db.Text
+    authorId    String   @map("author_id")
+    imageUrl    String   @map("image_url") @db.VarChar(255)
+    imageAlt    String   @map("image_alt") @db.VarChar(255)
+    likes       Int      @default(0)
+    shares      Int      @default(0)
+    slug        String   @unique @db.VarChar(255)
+    isPublished Boolean? @default(false) @map("is_published")
+    url         String   @unique @db.VarChar(255)
+
+    createdAt DateTime? @default(now()) @map("date_published")
+    updatedAt DateTime? @updatedAt @map("updated_at")
+
+    author User  @relation(fields: [authorId], references: [id])
+    tags   Tag[] @relation()
+
+    @@index([createdAt])
+    @@index([authorId])
+    @@index([slug])
+    @@map("posts")
+}
+
+model Tag {
+    id       String @id @default(cuid())
+    tagId    String @unique @map("tag_id")
+    tagName  String @map("tag_name")
+    tagColor String @map("tag_color")
+    tagUrl   String @default("/") @map("tag_url")
+
+    posts Post[]
+
+    @@map("tags")
 }

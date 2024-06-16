@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+// External libraries
+import React from "react"; // React
+import Image from "next/image"; // Next.js image component
 
-import { Button } from "@/components/ui/button";
+// Project UI components
+import { Button } from "@/components/ui/button"; // Button component
 
-import { ChevronsRight, Sparkle } from "lucide-react";
+// Icons
+import { ChevronsRight, Sparkle } from "lucide-react"; // Icons
 
 export default function LatestRelease() {
   return (
@@ -35,7 +38,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src={"/youtube-cover/bus-nmtw-reaction.jpg"}
+              src={"/images/youtube-cover/bus-nmtw-reaction.jpg"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -44,17 +47,24 @@ export default function LatestRelease() {
             />
           </div>
           <div className="w-full">
-            <small className="line-clamp-2 text-sm font-semibold">
+            <small
+              className="line-clamp-2 text-sm font-semibold"
+              title={`[BUS REACTION] BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
+            >
               {`[BUS REACTION] BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src={"/logo/yt_icon_rgb.png"}
+                src={"/images/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
                 width={16}
-                height={16}
+                height={11}
+                style={{ width: "auto", height: "auto" }}
               />
-              <p className="line-clamp-1 text-sm text-muted-foreground">
+              <p
+                className="line-clamp-1 text-sm text-muted-foreground"
+                title="BUS because of you i shine"
+              >
                 BUS because of you i shine
               </p>
             </div>
@@ -72,7 +82,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src={"/youtube-cover/bus-nmtw-artist-ver.jpg"}
+              src={"/images/youtube-cover/bus-nmtw-artist-ver.jpg"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -81,17 +91,24 @@ export default function LatestRelease() {
             />
           </div>
           <div className="w-full">
-            <small className="line-clamp-2 text-sm font-semibold">
+            <small
+              className="line-clamp-2 text-sm font-semibold"
+              title={`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' (Artist version)`}
+            >
               {`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' (Artist version)`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src={"/logo/yt_icon_rgb.png"}
+                src={"/images/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
                 width={16}
-                height={16}
+                height={11}
+                style={{ width: "auto", height: "auto" }}
               />
-              <p className="line-clamp-1 text-sm text-muted-foreground">
+              <p
+                className="line-clamp-1 text-sm text-muted-foreground"
+                title="TADA LABELS"
+              >
                 TADA LABELS
               </p>
             </div>
@@ -109,7 +126,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src={"/youtube-cover/bus-nmtw.webp"}
+              src={"/images/youtube-cover/bus-nmtw.webp"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -118,17 +135,24 @@ export default function LatestRelease() {
             />
           </div>
           <div className="w-full">
-            <small className="line-clamp-2 text-sm font-semibold">
+            <small
+              className="line-clamp-2 text-sm font-semibold"
+              title={`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
+            >
               {`BUS5 'แค่ไหนแค่นั้น (NO MATTER WHAT)' OFFICIAL MV`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src={"/logo/yt_icon_rgb.png"}
+                src={"/images/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
                 width={16}
-                height={16}
+                height={11}
+                style={{ width: "auto", height: "auto" }}
               />
-              <p className="line-clamp-1 text-sm text-muted-foreground">
+              <p
+                className="line-clamp-1 text-sm text-muted-foreground"
+                title="TADA LABELS"
+              >
                 TADA LABELS
               </p>
             </div>
@@ -143,7 +167,7 @@ export default function LatestRelease() {
         >
           <div className="h-20 w-28 shrink-0 overflow-hidden">
             <Image
-              src={"/youtube-cover/bus5-marckris-Introduction.jpg"}
+              src={"/images/youtube-cover/bus5-marckris-Introduction.jpg"}
               alt="youtube logo"
               width="1280"
               height="720"
@@ -152,17 +176,24 @@ export default function LatestRelease() {
             />
           </div>
           <div className="w-full">
-            <small className="line-clamp-2 text-sm font-semibold">
+            <small
+              className="line-clamp-2 text-sm font-semibold"
+              title={`BUS5 Member Introduction - MARCKRIS`}
+            >
               {`BUS5 Member Introduction - MARCKRIS`}
             </small>
             <div className="flex items-center gap-1">
               <Image
-                src={"/logo/yt_icon_rgb.png"}
+                src={"/images/logo/yt_icon_rgb.png"}
                 alt="youtube logo"
                 width={16}
-                height={16}
+                height={11}
+                style={{ width: "auto", height: "auto" }}
               />
-              <p className="line-clamp-1 text-sm text-muted-foreground">
+              <p
+                className="line-clamp-1 text-sm text-muted-foreground"
+                title="BUS because of you i shine"
+              >
                 BUS because of you i shine
               </p>
             </div>

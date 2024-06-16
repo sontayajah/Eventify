@@ -1,14 +1,18 @@
 "use client";
 
+// External libraries
 import React from "react";
 import Slider from "react-slick";
 
-import busBoyis from "/public/youtube-cover/bus-boyis.jpg";
-import busNoMatterWhat from "/public/youtube-cover/bus-nmtw.webp";
-import busWatchYourStep from "/public/youtube-cover/bus-wys.jpg";
+// Images
+import busBoyis from "/public/images/youtube-cover/bus-boyis.jpg";
+import busNoMatterWhat from "/public/images/youtube-cover/bus-nmtw.webp";
+import busWatchYourStep from "/public/images/youtube-cover/bus-wys.jpg";
 
+// Styles
 import "@/styles/react-slick.css";
 
+// Local components
 import CarouselImage from "@/components/CarouselImage";
 
 export default function Carousel() {
@@ -22,7 +26,8 @@ export default function Carousel() {
     autoplaySpeed: 3000,
     cssEase: "linear",
     arrows: false,
-    appendDots: (dots: any) => (
+    slidegap: 5,
+    appendDots: (dots: React.ReactElement) => (
       <div
         style={{
           position: "absolute",
@@ -37,7 +42,7 @@ export default function Carousel() {
 
   return (
     <div className="w-full lg:w-2/3">
-      <Slider {...settings}>
+      <Slider {...settings} className="overflow-hidden rounded-md">
         <CarouselImage
           src={busNoMatterWhat}
           alt="bus no matter what mv cover"

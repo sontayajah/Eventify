@@ -74,3 +74,10 @@
   opacity: 1;
   color: black;
 }
+
+.slick-list {
+  margin: 0 -5px;
+}
+.slick-slide > div {
+  padding: 0 5px;
+}

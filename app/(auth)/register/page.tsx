@@ -1,11 +1,15 @@
 "use client";
 
+// External libraries
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 
+// Project UI components
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,17 +21,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { RegisterSchema } from "@/lib/validator";
-import { useState } from "react";
-
+// Local components
 import FormError from "@/components/FormError";
 import FormSuccess from "@/components/FormSuccess";
-import { signIn } from "next-auth/react";
+
+// Local validation schema
+import { RegisterSchema } from "@/lib/validator";
+import { register } from "@/lib/actions/register.actions";
 
 export default function RegisterPage() {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-
   const [isPending, setIsPending] = useState<boolean>(false);
 
   const router = useRouter();
@@ -43,39 +47,35 @@ export default function RegisterPage() {
   });
 
   async function onSubmit(values: z.infer<typeof RegisterSchema>) {
-    setError("");
-    setIsPending(true);
+    try {
+      setError("");
+      setIsPending(true);
 
-    const validatedFields = RegisterSchema.safeParse(values);
+      const validatedFields = RegisterSchema.safeParse(values);
 
-    if (!validatedFields.success) {
-      return setError(error);
-    }
+      if (!validatedFields.success) {
+        return setError(error);
+      }
 
-    const response = await fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
+      const data = await register(values);
+
+      if (!data.success) {
+        setIsPending(false);
+        return setError(data.message);
+      }
+
+      await signIn("credentials", {
         username: values.username,
         password: values.password,
-        email: values.email,
-      }),
-    });
+        redirect: false,
+      });
 
-    const data = await response.json();
-    setIsPending(false);
-
-    if (!data.success) {
-      return setError(data.message);
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      setIsPending(false);
+      console.log(error);
     }
-
-    await signIn("credentials", {
-      username: values.username,
-      password: values.password,
-      redirect: false,
-    });
-
-    router.push("/");
-    router.refresh();
   }
 
   return (
@@ -169,7 +169,7 @@ export default function RegisterPage() {
           <FormSuccess message={success} />
 
           <Button type="submit" className="w-full" disabled={isPending}>
-            สมัครสมาชิก
+            {isPending ? "กำลังโหลด..." : "สมัครสมาชิก"}
           </Button>
         </form>
       </Form>

@@ -1,11 +1,15 @@
-"use client";
+// Local components
+import SeeMoreButton from "./SeeMoreButton";
+import PostCard from "./PostCard";
+import { getAllPosts } from "@/lib/actions/post.action";
 
-import { Button } from "@/components/ui/button";
+export default async function FanCommunity() {
+  const allPosts = await getAllPosts({
+    isPublished: true,
+    postType: "unofficial",
+    take: 4,
+  });
 
-import { ChevronsRight } from "lucide-react";
-import FanCommunityCard from "./FanCommunityCard";
-
-export default function FanCommunity() {
   return (
     <div className="w-full select-none border-b pb-8 pt-8 lg:border-none lg:pt-12">
       <div>
@@ -21,18 +25,18 @@ export default function FanCommunity() {
         </div>
       </div>
 
-      <FanCommunityCard />
+      {allPosts.length > 0 && (
+        <>
+          <PostCard allPosts={allPosts} />
+        </>
+      )}
+
+      {allPosts.length === 0 && (
+        <p className="mt-4 text-center text-muted-foreground">ยังไม่มีโพสต์</p>
+      )}
 
       <div className="mt-4 flex items-center justify-end">
-        <Button
-          variant="link"
-          className="h-min w-fit px-0 py-0 hover:text-primary/90 hover:no-underline dark:text-primary"
-          onClick={() => {
-            window.open("/community", "_blank");
-          }}
-        >
-          ดูเพิ่มเติม <ChevronsRight size={16} className="ml-0.5" />
-        </Button>
+        <SeeMoreButton url="/community" />
       </div>
     </div>
   );

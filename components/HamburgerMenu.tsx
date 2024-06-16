@@ -1,17 +1,17 @@
-import React, { Dispatch, SetStateAction } from "react";
+// External libraries
+import React, { Dispatch, SetStateAction } from "react"; // React and types
+import Link from "next/link"; // Next.js link component
+import { X } from "lucide-react"; // Icon
 
-import Link from "next/link";
-
-import { Button } from "@/components/ui/button";
+// Project UI components
+import { Button } from "@/components/ui/button"; // Button
+import { Separator } from "@/components/ui/separator"; // Separator
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
-
-import { X } from "lucide-react";
+} from "@/components/ui/accordion"; // Accordion components
 
 interface HamburgerMenuType {
   navOpen: boolean;
@@ -24,7 +24,7 @@ export default function HamburgerMenu({
 }: HamburgerMenuType) {
   return (
     <div
-      className={`fixed inset-y-0 start-0 z-50 flex flex-col ${!navOpen ? "-translate-x-full" : ""} w-screen max-w-sm bg-background transition-all`}
+      className={`fixed inset-y-0 start-0 z-50 flex flex-col ${!navOpen ? "-translate-x-full" : ""} w-screen max-w-sm bg-background transition-all duration-500`}
     >
       <div className="flex w-full items-center justify-between gap-2 px-8 py-5">
         <Link href="/" className="flex items-center gap-2">
@@ -53,7 +53,10 @@ export default function HamburgerMenu({
         <Separator />
       </div>
 
-      <div className="flex h-full flex-col justify-between overflow-y-auto px-4">
+      <div
+        className="flex h-full flex-col justify-between overflow-y-auto px-4"
+        style={{ scrollbarWidth: "none" }}
+      >
         <Accordion type="multiple" className="w-full" defaultValue={["item-2"]}>
           <AccordionItem value="item-1">
             <AccordionTrigger className="chevronDownDisable rounded-md px-4 py-2 hover:bg-muted hover:no-underline">
@@ -231,12 +234,16 @@ export default function HamburgerMenu({
           </AccordionItem>
         </Accordion>
 
-        <div className="sticky bottom-0 mt-4 flex flex-col gap-1 border-t bg-background py-5">
-          <Button className="w-full">เข้าสู่ระบบ</Button>
-          <Button className="w-full" variant="ghost">
-            สมัครสมาชิก
-          </Button>
-        </div>
+        {/* {!user && (
+          <>
+            <div className="sticky bottom-0 mt-4 flex flex-col gap-1 border-t bg-background py-5">
+              <Button className="w-full">เข้าสู่ระบบ</Button>
+              <Button className="w-full" variant="ghost">
+                สมัครสมาชิก
+              </Button>
+            </div>
+          </>
+        )} */}
       </div>
     </div>
   );

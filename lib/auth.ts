@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import db from "@/lib/prisma";
 import { compareSync } from "bcryptjs";
+import { Verified } from "lucide-react";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -19,6 +20,9 @@ export const authOptions: NextAuthOptions = {
           where: {
             username: credentials?.username,
           },
+          include: {
+            profile: true,
+          },
         });
 
         if (!user) {
@@ -35,6 +39,11 @@ export const authOptions: NextAuthOptions = {
             id: user.id,
             username: user.username,
             email: user.email,
+            displayName: user.profile?.displayName!,
+            isVerified: user.profile?.isVerified,
+            verifyTypeId: user.profile?.isVerified
+              ? user.profile?.verifyTypeId
+              : "0",
           };
         }
 
@@ -52,6 +61,8 @@ export const authOptions: NextAuthOptions = {
         token.username = user.username;
         token.id = user.id;
         token.email = user.email;
+        token.displayName = user.displayName;
+        token.verifyTypeId = user.verifyTypeId;
       }
       return token;
     },
@@ -60,6 +71,8 @@ export const authOptions: NextAuthOptions = {
       session.user.id = token.id;
       session.user.username = token.username;
       session.user.email = token.email;
+      session.user.displayName = token.displayName;
+      session.user.verifyTypeId = token.verifyTypeId;
 
       return session;
     },

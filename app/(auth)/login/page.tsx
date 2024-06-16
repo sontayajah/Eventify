@@ -1,10 +1,16 @@
 "use client";
 
+// External libraries
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { z } from "zod";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
+// Project UI components
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,21 +22,18 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { LoginSchema } from "@/lib/validator";
+// Local components
 import FormError from "@/components/FormError";
 import FormSuccess from "@/components/FormSuccess";
 
-import { signIn } from "next-auth/react";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+// Local validation schema
+import { LoginSchema } from "@/lib/validator";
 
 export default function LoginPage() {
   const router = useRouter();
 
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-
   const [isPending, setIsPending] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -42,31 +45,43 @@ export default function LoginPage() {
   });
 
   async function onSubmit(values: z.infer<typeof LoginSchema>) {
-    setError("");
-    setSuccess("");
+    try {
+      setError("");
+      setSuccess("");
+      setIsPending(true);
 
-    setIsPending(true);
+      const validatedFields = LoginSchema.safeParse(values);
 
-    const validatedFields = LoginSchema.safeParse(values);
+      if (!validatedFields.success) {
+        return setError(error);
+      }
 
-    if (!validatedFields.success) {
-      return setError(error);
+      const signInPromise = new Promise(async (resolve, reject) => {
+        const response = await signIn("credentials", {
+          username: values.username,
+          password: values.password,
+          redirect: false,
+        });
+
+        if (!response?.ok) {
+          reject(new Error("Promise rejected"));
+          setIsPending(false);
+          setError("Username or password incorrect.");
+        } else {
+          resolve("Promise resolved successfully");
+          router.push("/");
+          router.refresh();
+        }
+      });
+
+      await toast.promise(signInPromise, {
+        pending: "กำลังเข้าสู่ระบบ...",
+        success: "เข้าสู่ระบบสำเร็จ 👌",
+        error: "เข้าสู่ระบบไม่สำเร็จ 🤯",
+      });
+    } catch (error) {
+      console.log(error);
     }
-
-    const response = await signIn("credentials", {
-      username: values.username,
-      password: values.password,
-      redirect: false,
-    });
-
-    setIsPending(false);
-
-    if (!response?.ok) {
-      return setError("Username or password incorrect.");
-    }
-
-    router.push("/");
-    router.refresh();
   }
 
   return (
@@ -120,7 +135,7 @@ export default function LoginPage() {
           <FormSuccess message={success} />
 
           <Button type="submit" className="w-full" disabled={isPending}>
-            เข้าสู่ระบบ
+            {isPending ? "กำลังโหลด..." : "เข้าสู่ระบบ"}
           </Button>
         </form>
       </Form>

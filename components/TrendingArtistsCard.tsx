@@ -1,3 +1,4 @@
+// External libraries
 import React from "react";
 import Image from "next/image";
 
@@ -7,7 +8,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/bus.jpg"}
+            src={"/images/artists/spotify/bus.jpg"}
             alt="bus"
             width="1280"
             height="720"
@@ -22,7 +23,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/nunew.jpg"}
+            src={"/images/artists/spotify/nunew.jpg"}
             alt="nunew"
             width="1280"
             height="720"
@@ -37,7 +38,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/bowkylion.jpg"}
+            src={"/images/artists/spotify/bowkylion.jpg"}
             alt="bowkylion"
             width="1280"
             height="720"
@@ -52,7 +53,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/jeff-satur.jpg"}
+            src={"/images/artists/spotify/jeff-satur.jpg"}
             alt="jeffsatur"
             width="1280"
             height="720"
@@ -67,7 +68,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/nont-tanont.jpg"}
+            src={"/images/artists/spotify/nont-tanont.jpg"}
             alt="nonttanont"
             width="1280"
             height="720"
@@ -82,7 +83,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/4eve.jpg"}
+            src={"/images/artists/spotify/4eve.jpg"}
             alt="4eve"
             width="1280"
             height="720"
@@ -97,7 +98,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/billkin.jpg"}
+            src={"/images/artists/spotify/billkin.jpg"}
             alt="billkin"
             width="1280"
             height="720"
@@ -112,7 +113,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/pixxie.jpg"}
+            src={"/images/artists/spotify/pixxie.jpg"}
             alt="pixxie"
             width="1280"
             height="720"
@@ -127,7 +128,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/bamm.jpg"}
+            src={"/images/artists/spotify/bamm.jpg"}
             alt="bamm"
             width="1280"
             height="720"
@@ -142,7 +143,7 @@ export default function TrendingArtistsCard() {
       <div className="flex w-full flex-col items-center rounded-xl">
         <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
-            src={"/artists/spotify/proxie.jpg"}
+            src={"/images/artists/spotify/proxie.jpg"}
             alt="proxie"
             width="1280"
             height="720"

@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
+// External libraries
+import React from "react"; // React
+import Link from "next/link"; // Next.js link component
+import Image from "next/image"; // Next.js image component
 
-// Components
+// Project UI components
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,15 +13,15 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/navigation-menu"; // Navigation menu components
+import { Separator } from "@/components/ui/separator"; // Separator component
 
 // Icons
-import { FileImage, Music, PartyPopper, Ticket, Tv, Video } from "lucide-react";
+import { FileImage, Music, PartyPopper, Ticket, Tv, Video } from "lucide-react"; // Icons
 
 // Utils
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; // Utility function
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"; // Navigation menu trigger style
 
 export default function IndexNavbarArtistsMenu() {
   return (
@@ -49,7 +50,10 @@ export default function IndexNavbarArtistsMenu() {
                   <p className="block select-none rounded-md font-bold">
                     ศิลปินเดี่ยว
                   </p>
-                  <p className="line-clamp-2 select-none text-sm leading-snug text-muted-foreground">
+                  <p
+                    className="line-clamp-2 select-none text-sm leading-snug text-muted-foreground"
+                    title="ศิลปินที่ทำงานเพลงหรือแสดงเดี่ยว โดยมีผลงานและกิจกรรมในนามของตัวเอง"
+                  >
                     ศิลปินที่ทำงานเพลงหรือแสดงเดี่ยว
                     โดยมีผลงานและกิจกรรมในนามของตัวเอง
                   </p>
@@ -61,7 +65,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/soloist/male"
                     >
                       <Image
-                        src={"/artists/jeffsatur.png"}
+                        src={"/images/artists/jeffsatur.png"}
                         alt="artist jeff satur image"
                         width="1280"
                         height="720"
@@ -78,7 +82,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/soloist/female"
                     >
                       <Image
-                        src={"/artists/milli.png"}
+                        src={"/images/artists/milli.png"}
                         alt="artist milli image"
                         width="1280"
                         height="720"
@@ -99,7 +103,10 @@ export default function IndexNavbarArtistsMenu() {
                   <p className="block select-none rounded-md font-bold">
                     ศิลปินคู่และกลุ่ม
                   </p>
-                  <p className="line-clamp-2 select-none text-sm leading-snug text-muted-foreground">
+                  <p
+                    className="line-clamp-2 select-none text-sm leading-snug text-muted-foreground"
+                    title="ศิลปินที่ทำงานร่วมกันเป็นกลุ่ม โดยมีสมาชิกตั้งแต่ 2-3 คนขึ้นไป โดยมีผลงานเพลงและกิจกรรมร่วมกันในนามของวง"
+                  >
                     ศิลปินที่ทำงานร่วมกันเป็นกลุ่ม โดยมีสมาชิกตั้งแต่ 2-3
                     คนขึ้นไป โดยมีผลงานเพลงและกิจกรรมร่วมกันในนามของวง
                   </p>
@@ -111,7 +118,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/groups/male"
                     >
                       <Image
-                        src={"/artists/bus.png"}
+                        src={"/images/artists/bus.png"}
                         alt="artist bus image"
                         width="1280"
                         height="720"
@@ -128,7 +135,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/groups/female"
                     >
                       <Image
-                        src={"/artists/4eve.png"}
+                        src={"/images/artists/4eve.png"}
                         alt="artist 4eve image"
                         width="1280"
                         height="720"
@@ -145,7 +152,7 @@ export default function IndexNavbarArtistsMenu() {
                       href="/artists/groups/co-ed"
                     >
                       <Image
-                        src={"/artists/bamm.png"}
+                        src={"/images/artists/bamm.png"}
                         alt="artist bamm image"
                         width="1280"
                         height="720"
@@ -166,7 +173,10 @@ export default function IndexNavbarArtistsMenu() {
                   <p className="block select-none rounded-md font-bold">
                     วงดนตรี
                   </p>
-                  <p className="line-clamp-2 select-none text-sm leading-snug text-muted-foreground">
+                  <p
+                    className="line-clamp-2 select-none text-sm leading-snug text-muted-foreground"
+                    title="กลุ่มของศิลปินที่ประกอบไปด้วยสมาชิกที่เล่นเครื่องดนตรีและร้องเพลง ทั้งวงดนตรีชาย วงดนตรีหญิง หรือวงดนตรีผสม"
+                  >
                     กลุ่มของศิลปินที่ประกอบไปด้วยสมาชิกที่เล่นเครื่องดนตรีและร้องเพลง
                     ทั้งวงดนตรีชาย วงดนตรีหญิง หรือวงดนตรีผสม
                   </p>
@@ -179,7 +189,7 @@ export default function IndexNavbarArtistsMenu() {
                     >
                       <div className="flex w-full gap-8">
                         <Image
-                          src={"/artists/threemandown.png"}
+                          src={"/images/artists/threemandown.png"}
                           alt="artist three man down image"
                           width="1280"
                           height="720"
@@ -212,7 +222,10 @@ export default function IndexNavbarArtistsMenu() {
                     <Music width={16} height={16} />
                     เพลง
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  <p
+                    className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    title="ผลงานดนตรีของศิลปิน เช่น ซิงเกิ้ล อัลบั้ม หรือเพลงประกอบซีรีส์และภาพยนตร์"
+                  >
                     ผลงานดนตรีของศิลปิน เช่น ซิงเกิ้ล อัลบั้ม
                     หรือเพลงประกอบซีรีส์และภาพยนตร์
                   </p>
@@ -227,7 +240,7 @@ export default function IndexNavbarArtistsMenu() {
                     <Video width={16} height={16} />
                     วิดีโอ
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="คลิปวิดีโอต่าง ๆ ของศิลปิน เช่น มิวสิกวิดีโอ, วิดีโอเบื้องหลังการถ่ายทำ, ไลฟ์, Vlog, Live Session">
                     คลิปวิดีโอต่าง ๆ ของศิลปิน เช่น มิวสิกวิดีโอ,
                     วิดีโอเบื้องหลังการถ่ายทำ, ไลฟ์, Vlog, Live Session
                   </p>
@@ -242,7 +255,7 @@ export default function IndexNavbarArtistsMenu() {
                     <FileImage width={16} height={16} />
                     รูปภาพ
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="ภาพถ่ายต่าง ๆ ของศิลปิน เช่น ภาพจากการถ่ายแบบ ภาพจากกิจกรรมต่าง ๆ หรือคอนเสิร์ตของศิลปิน">
                     ภาพถ่ายต่าง ๆ ของศิลปิน เช่น ภาพจากการถ่ายแบบ
                     ภาพจากกิจกรรมต่าง ๆ หรือคอนเสิร์ตของศิลปิน
                   </p>
@@ -257,7 +270,7 @@ export default function IndexNavbarArtistsMenu() {
                     <Tv width={16} height={16} />
                     รายการโทรทัศน์/ออนไลน์
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="รายการที่ศิลปินเข้าร่วม ไม่ว่าจะเป็นรายการวาไรตี้, ทอล์คโชว์, ซีรีส์, หรือการแสดงผ่านรายการเพลง">
                     รายการที่ศิลปินเข้าร่วม ไม่ว่าจะเป็นรายการวาไรตี้,
                     ทอล์คโชว์, ซีรีส์, หรือการแสดงผ่านรายการเพลง
                   </p>
@@ -281,7 +294,7 @@ export default function IndexNavbarArtistsMenu() {
                     <PartyPopper width={16} height={16} />
                     งานอีเวนต์
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="กิจกรรมอย่างเป็นทางการจากค่ายต้นสังกัดของศิลปิน หรือแบรนด์ต่าง ๆ ที่มีศิลปินเข้าร่วมงาน">
                     กิจกรรมอย่างเป็นทางการจากค่ายต้นสังกัดของศิลปิน
                     หรือแบรนด์ต่าง ๆ ที่มีศิลปินเข้าร่วมงาน
                   </p>
@@ -296,7 +309,7 @@ export default function IndexNavbarArtistsMenu() {
                     <Ticket width={16} height={16} />
                     คอนเสิร์ต
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="การแสดงสดของศิลปิน ทั้งมินิคอนเสิร์ต คอนเสิร์ตเดี่ยว คอนเสิร์ตรวมศิลปิน หรือการแสดงสดในเทศกาลพิเศษต่าง ๆ">
                     การแสดงสดของศิลปิน ทั้งมินิคอนเสิร์ต คอนเสิร์ตเดี่ยว
                     คอนเสิร์ตรวมศิลปิน หรือการแสดงสดในเทศกาลพิเศษต่าง ๆ
                   </p>

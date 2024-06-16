@@ -1,31 +1,29 @@
 import Link from "next/link";
-
-// Components
-
+import Image from "next/image";
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
-
 import IndexNavbarMenuItem from "./IndexNavbarMenuItem";
-
-// import { useSession } from "next-auth/react";
-
-import IndexNavbarButton from "./IndexNavbarButton";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/authOptions";
+import NavbarButton from "./NavbarButton";
+import { getCurrentUser } from "@/lib/session";
+import { getUserProfile } from "@/lib/actions/user.action";
 
 export default async function Navbar() {
-  // const { data: session } = useSession();
-  const session = await getServerSession(authOptions);
+  const user = await getCurrentUser();
+
+  let profile;
+  if (user) {
+    profile = await getUserProfile(user.id);
+  }
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-background shadow-sm">
+      <header className="sticky top-0 z-50 border-b bg-background shadow-sm">
         <nav className="mx-auto flex justify-between px-4 py-4 sm:container">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <IndexNavbarButton />
+              <NavbarButton type="index" />
 
               <Link href="/" className="flex items-center gap-2">
-                <span className="logo mt-0.5 text-xl font-bold tracking-tight">
+                <span className="logo mt-0.5 truncate text-xl font-bold tracking-tight">
                   T-Pop Now
                 </span>
               </Link>
@@ -34,14 +32,7 @@ export default async function Navbar() {
 
             <IndexNavbarMenuItem />
           </div>
-          <div className="flex items-center gap-2">
-            {session?.user && (
-              <>
-                <span>สวัสดี!</span>
-                <span className="font-semibold">{session.user.username}</span>
-              </>
-            )}
-
+          <div className="flex items-center">
             <ProfileDropdownMenu />
           </div>
         </nav>

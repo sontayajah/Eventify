@@ -1,11 +1,17 @@
-"use client";
+// Local components
+import PostCard from "./PostCard";
 
-import { Button } from "@/components/ui/button";
+// Project UI components
+import SeeMoreButton from "./SeeMoreButton";
+import { getAllPosts } from "@/lib/actions/post.action";
 
-import { ChevronsRight } from "lucide-react";
-import LatestNewsCard from "./LatestNewsCard";
+export default async function LatestNews() {
+  const allPosts = await getAllPosts({
+    take: 4,
+    postType: "official",
+    isPublished: true,
+  });
 
-export default function LatestNews() {
   return (
     <div className="w-full select-none border-b pb-8 pt-8 lg:border-none lg:pb-0 lg:pt-12">
       <div>
@@ -21,18 +27,18 @@ export default function LatestNews() {
         </div>
       </div>
 
-      <LatestNewsCard />
+      {allPosts.length > 0 && (
+        <>
+          <PostCard allPosts={allPosts} />
+        </>
+      )}
+
+      {allPosts.length === 0 && (
+        <p className="mt-4 text-center text-muted-foreground">ยังไม่มีโพสต์</p>
+      )}
 
       <div className="mt-4 flex items-center justify-end">
-        <Button
-          variant="link"
-          className="h-min w-fit px-0 py-0 hover:text-primary/90 hover:no-underline dark:text-primary"
-          onClick={() => {
-            window.open("/news", "_blank");
-          }}
-        >
-          ดูเพิ่มเติม <ChevronsRight size={16} className="ml-0.5" />
-        </Button>
+        <SeeMoreButton url="/news" />
       </div>
     </div>
   );
