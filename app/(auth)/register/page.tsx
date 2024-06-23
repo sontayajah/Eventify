@@ -70,7 +70,7 @@ export default function RegisterPage() {
         redirect: false,
       });
 
-      router.push("/");
+      router.replace("/");
       router.refresh();
     } catch (error) {
       setIsPending(false);

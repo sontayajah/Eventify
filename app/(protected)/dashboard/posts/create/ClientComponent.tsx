@@ -11,7 +11,8 @@ import { toast } from "react-toastify";
 export default function NewPost({ user }: { user: User }) {
   const [editor, setEditor] = useState<any>();
   const [title, setTitle] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isPublishedLoading, setIsPublishedLoading] = useState<boolean>(false);
+  const [isDraftLoading, setIsDraftLoading] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -39,7 +40,7 @@ export default function NewPost({ user }: { user: User }) {
             <div className="mx-auto my-6 flex gap-8 px-4 sm:container">
               <Button
                 size="lg"
-                disabled={isLoading}
+                disabled={isPublishedLoading || isDraftLoading}
                 className="px-16"
                 onClick={() => {
                   const savePostData = async () => {
@@ -48,7 +49,7 @@ export default function NewPost({ user }: { user: User }) {
                         return console.log("Title is empty");
                       }
 
-                      setIsLoading(true);
+                      setIsPublishedLoading(true);
 
                       const postData = {
                         title: title,
@@ -74,11 +75,11 @@ export default function NewPost({ user }: { user: User }) {
                       const createPostResult = await createPostResponse.json();
 
                       if (createPostResult?.success) {
-                        router.push(createPostResult?.data.post.url);
+                        router.replace(createPostResult?.data.post.url);
                         router.refresh();
                       }
                     } catch (error) {
-                      setIsLoading(false);
+                      setIsPublishedLoading(false);
                       console.log(error);
                     }
                   };
@@ -86,12 +87,12 @@ export default function NewPost({ user }: { user: User }) {
                   savePostData();
                 }}
               >
-                {isLoading ? <>กำลังโพสต์...</> : <>โพสต์</>}
+                {isPublishedLoading ? <>กำลังโพสต์...</> : <>โพสต์</>}
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                disabled={isLoading}
+                disabled={isDraftLoading || isPublishedLoading}
                 className="px-16"
                 onClick={() => {
                   const savePostData = async () => {
@@ -99,7 +100,7 @@ export default function NewPost({ user }: { user: User }) {
                       return console.log("Title is empty");
                     }
 
-                    setIsLoading(true);
+                    setIsDraftLoading(true);
 
                     const postData = {
                       title: title,
@@ -107,18 +108,26 @@ export default function NewPost({ user }: { user: User }) {
                       authorId: user.id,
                     };
 
-                    const createPostResponse = await fetch("/api/post/create", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
+                    const createDraftPostResponse = await toast.promise(
+                      fetch("/api/post/create-draft", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(postData),
+                      }),
+                      {
+                        pending: "กำลังบันทึกฉบับร่าง...",
+                        success: "บันทึกฉบับร่างสำเร็จ 👌",
+                        error: "บันทึกฉบับร่างไม่สำเร็จ 🤯",
                       },
-                      body: JSON.stringify(postData),
-                    });
+                    );
 
-                    const createPostResult = await createPostResponse.json();
+                    const createDraftPostResult =
+                      await createDraftPostResponse.json();
 
-                    if (createPostResult?.success) {
-                      router.push(createPostResult?.data.post.url);
+                    if (createDraftPostResult?.success) {
+                      router.replace(createDraftPostResult?.data.post.url);
                       router.refresh();
                     }
                   };
@@ -126,7 +135,7 @@ export default function NewPost({ user }: { user: User }) {
                   savePostData();
                 }}
               >
-                {isLoading ? <>กำลังบันทึก...</> : <>บันทึกร่าง</>}
+                {isDraftLoading ? <>กำลังบันทึก...</> : <>บันทึกร่าง</>}
               </Button>
             </div>
           </>

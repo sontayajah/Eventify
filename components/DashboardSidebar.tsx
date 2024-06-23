@@ -66,7 +66,7 @@ export default function DashboardSidebar() {
                       </Link>
                     </Button>
                   </AccordionItem>
-                  <AccordionItem value="item-1-2">
+                  {/* <AccordionItem value="item-1-2">
                     <Button
                       asChild
                       variant="ghost"
@@ -79,7 +79,7 @@ export default function DashboardSidebar() {
                         โพสต์ที่รอตรวจสอบ
                       </Link>
                     </Button>
-                  </AccordionItem>
+                  </AccordionItem> */}
                   <AccordionItem value="item-1-3">
                     <Button
                       asChild

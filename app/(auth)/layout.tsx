@@ -9,7 +9,6 @@ import "../globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { getCurrentUser } from "@/lib/session";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/ReactToastify.min.css";
 
 // Font setup
 const noto_sans_thai = Noto_Sans_Thai({ subsets: ["thai"] });

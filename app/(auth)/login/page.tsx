@@ -69,7 +69,7 @@ export default function LoginPage() {
           setError("Username or password incorrect.");
         } else {
           resolve("Promise resolved successfully");
-          router.push("/");
+          router.replace("/");
           router.refresh();
         }
       });

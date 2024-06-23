@@ -1,7 +1,6 @@
 import { getUserProfile } from "@/lib/actions/user.action";
 import { getCurrentUser } from "@/lib/session";
-import { useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import React from "react";
 
 export default async function Admin() {

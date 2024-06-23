@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 
-import { ExternalLink, Heart } from "lucide-react";
+import { CircleAlert, ExternalLink, Heart } from "lucide-react";
 
 import { formatDateTime } from "@/lib/utils";
 import { generateHTML } from "@tiptap/html";
@@ -84,6 +84,25 @@ export default function ClientComponent(props: any) {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+
+          {!postData.isPublished && !postData.isDeleted && (
+            <>
+              <div className="my-6 flex items-center gap-x-2 rounded-md bg-yellow-500/15 p-4 text-sm font-semibold text-yellow-500 dark:bg-yellow-500/85 dark:text-white">
+                <CircleAlert className="h-4 w-4" />
+                หน้านี้เป็นตัวอย่างของโพสต์ฉบับร่าง
+                เฉพาะคุณเท่านั้นที่สามารถเห็นหน้านี้ได้
+              </div>
+            </>
+          )}
+
+          {!postData.isPublished && postData.isDeleted && (
+            <>
+              <div className="my-6 flex items-center gap-x-2 rounded-md bg-red-500/15 p-4 text-sm font-semibold text-red-500 dark:bg-red-500/85 dark:text-white">
+                <CircleAlert className="h-4 w-4" />
+                โพสต์นี้ถูกลบแล้ว เฉพาะคุณเท่านั้นที่สามารถเห็นหน้านี้ได้
+              </div>
+            </>
+          )}
 
           <div className="mt-4 flex flex-wrap gap-1.5">
             {postData?.tags?.map((tag: Tag) => {

@@ -63,9 +63,12 @@ export interface Post {
   likes: number; // Default 0
   shares: number; // Default 0
   slug: string; // Unique VarChar(255)
-  isPublished?: boolean; // Default false
+  isPublished: boolean; // Default false
+  isDeleted: boolean;
   url: string; // Unique VarChar(255)
+  publishedDate?: Date;
 
+  deletedAt?: Date;
   createdAt?: Date; // DateTime with default value
   updatedAt?: Date; // DateTime with updatedAt behavior
 

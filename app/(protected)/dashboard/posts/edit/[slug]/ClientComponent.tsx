@@ -80,7 +80,7 @@ export default function EditPost({
                       const editPostResult = await editPostResponse.json();
 
                       if (editPostResult?.success) {
-                        router.push(editPostResult?.data.post.url);
+                        router.replace(editPostResult?.data.post.url);
                         router.refresh();
                       }
                     } catch (error) {
@@ -94,7 +94,7 @@ export default function EditPost({
               >
                 {isLoading ? <>กำลังแก้ไขโพสต์...</> : <>แก้ไขโพสต์</>}
               </Button>
-              <Button
+              {/* <Button
                 size="lg"
                 variant="outline"
                 disabled={isLoading}
@@ -124,7 +124,7 @@ export default function EditPost({
                     const createPostResult = await createPostResponse.json();
 
                     if (createPostResult?.success) {
-                      router.push(createPostResult?.data.post.url);
+                      router.replace(createPostResult?.data.post.url);
                       router.refresh();
                     }
                   };
@@ -133,7 +133,7 @@ export default function EditPost({
                 }}
               >
                 {isLoading ? <>กำลังบันทึก...</> : <>บันทึกร่าง</>}
-              </Button>
+              </Button> */}
             </div>
           </>
         )}

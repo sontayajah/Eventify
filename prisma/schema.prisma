@@ -56,19 +56,22 @@ model VerifyType {
 }
 
 model Post {
-    id          String   @id @default(cuid())
-    title       String   @db.VarChar(255)
-    content     String   @db.Text
-    authorId    String   @map("author_id")
-    imageUrl    String   @map("image_url") @db.VarChar(255)
-    imageAlt    String   @map("image_alt") @db.VarChar(255)
-    likes       Int      @default(0)
-    shares      Int      @default(0)
-    slug        String   @unique @db.VarChar(255)
-    isPublished Boolean? @default(false) @map("is_published")
-    url         String   @unique @db.VarChar(255)
+    id            String    @id @default(cuid())
+    title         String    @db.VarChar(255)
+    content       String    @db.Text
+    authorId      String    @map("author_id")
+    imageUrl      String    @map("image_url")
+    imageAlt      String    @map("image_alt")
+    likes         Int       @default(0)
+    shares        Int       @default(0)
+    slug          String    @unique
+    isPublished   Boolean   @default(false) @map("is_published")
+    isDeleted     Boolean   @default(false) @map("is_deleted")
+    url           String    @unique @db.VarChar(255)
+    publishedDate DateTime? @map("published_date")
 
-    createdAt DateTime? @default(now()) @map("date_published")
+    deletedAt DateTime? @map("deleted_at")
+    createdAt DateTime? @default(now()) @map("created_at")
     updatedAt DateTime? @updatedAt @map("updated_at")
 
     author User  @relation(fields: [authorId], references: [id])

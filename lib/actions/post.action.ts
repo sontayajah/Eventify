@@ -60,17 +60,27 @@ export async function getPostById(props: GetPostByIdProps) {
 }
 
 interface GetAllPostsProps {
+  authorId?: string;
   isPublished?: boolean;
+  isDeleted?: boolean;
   postType?: "official" | "unofficial";
   take?: number;
+  skip?: number;
 }
 
 export async function getAllPosts(props: GetAllPostsProps) {
-  const { isPublished, postType, take } = props;
+  const { authorId, isPublished, isDeleted, postType, take, skip } = props;
 
   const posts = await db.post.findMany({
     where: {
-      ...(postType
+      ...(authorId !== undefined
+        ? {
+            authorId: {
+              equals: authorId,
+            },
+          }
+        : {}),
+      ...(postType !== undefined
         ? {
             author: {
               profile: {
@@ -80,9 +90,14 @@ export async function getAllPosts(props: GetAllPostsProps) {
             },
           }
         : {}),
-      ...(isPublished
+      ...(isPublished !== undefined
         ? {
             isPublished: isPublished,
+          }
+        : {}),
+      ...(isDeleted !== undefined
+        ? {
+            isDeleted: isDeleted,
           }
         : {}),
     },
@@ -99,6 +114,7 @@ export async function getAllPosts(props: GetAllPostsProps) {
       tags: true,
     },
     take: take,
+    skip: skip,
     orderBy: {
       createdAt: "desc",
     },
@@ -107,11 +123,256 @@ export async function getAllPosts(props: GetAllPostsProps) {
   return posts as Post[];
 }
 
-interface CreatePostProps {
-  title: string;
-  content: string;
+interface GetAllPublishedPostsOfUserProps {
   authorId: string;
 }
+export async function getAllPublishedPostsOfUser(
+  props: GetAllPublishedPostsOfUserProps,
+) {
+  const { authorId } = props;
+
+  const posts = await db.post.findMany({
+    where: {
+      authorId: {
+        equals: authorId,
+      },
+      isPublished: {
+        equals: true,
+      },
+      isDeleted: {
+        equals: false,
+      },
+    },
+    include: {
+      author: {
+        include: {
+          profile: {
+            include: {
+              verifyType: true,
+            },
+          },
+        },
+      },
+      tags: true,
+    },
+    // take: take,
+    // skip: skip,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return posts as Post[];
+}
+
+interface GetAllDraftPostsOfUserProps {
+  authorId: string;
+}
+export async function getAllDraftPostsOfUser(
+  props: GetAllDraftPostsOfUserProps,
+) {
+  const { authorId } = props;
+
+  const posts = await db.post.findMany({
+    where: {
+      authorId: {
+        equals: authorId,
+      },
+      isPublished: {
+        equals: false,
+      },
+      isDeleted: {
+        equals: false,
+      },
+    },
+    include: {
+      author: {
+        include: {
+          profile: {
+            include: {
+              verifyType: true,
+            },
+          },
+        },
+      },
+      tags: true,
+    },
+    // take: take,
+    // skip: skip,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return posts as Post[];
+}
+
+interface GetAllDeletedPostsOfUserProps {
+  authorId: string;
+}
+export async function getAllDeletedPostsOfUser(
+  props: GetAllDeletedPostsOfUserProps,
+) {
+  const { authorId } = props;
+
+  const posts = await db.post.findMany({
+    where: {
+      authorId: {
+        equals: authorId,
+      },
+      isDeleted: {
+        equals: true,
+      },
+      isPublished: {
+        equals: false,
+      },
+    },
+    include: {
+      author: {
+        include: {
+          profile: {
+            include: {
+              verifyType: true,
+            },
+          },
+        },
+      },
+      tags: true,
+    },
+    // take: take,
+    // skip: skip,
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return posts as Post[];
+}
+
+interface DeletePostOfUserProps {
+  authorId: string;
+  postId: string;
+}
+export async function DeletePostOfUser(props: DeletePostOfUserProps) {
+  const { authorId, postId } = props;
+
+  const posts = await db.post.findUnique({
+    where: { id: postId },
+  });
+
+  if (!posts) {
+    return {
+      success: false,
+      message: "No posts found",
+    };
+  }
+
+  if (posts.authorId !== authorId) {
+    return {
+      success: false,
+      message: "No permissions to delete the post",
+    };
+  }
+
+  await db.post.update({
+    where: { id: postId },
+    data: { isPublished: false, isDeleted: true, deletedAt: new Date() },
+  });
+
+  return {
+    success: true,
+    message: "Post deleted successfully",
+  };
+}
+
+interface RecoveryPostOfUserProps {
+  authorId: string;
+  postId: string;
+}
+export async function RecoveryPostOfUser(props: RecoveryPostOfUserProps) {
+  const { authorId, postId } = props;
+
+  const posts = await db.post.findUnique({
+    where: { id: postId },
+  });
+
+  if (!posts) {
+    return {
+      success: false,
+      message: "No posts found",
+    };
+  }
+
+  if (posts.authorId !== authorId) {
+    return {
+      success: false,
+      message: "No permissions to recovery the post",
+    };
+  }
+
+  await db.post.update({
+    where: { id: postId },
+    data: {
+      isPublished: false,
+      isDeleted: false,
+      deletedAt: null,
+      createdAt: new Date(),
+    },
+  });
+
+  return {
+    success: true,
+    message: "Post deleted successfully",
+  };
+}
+
+interface MakePublishedPostOfUserProps {
+  authorId: string;
+  postId: string;
+}
+export async function MakePublishedPostOfUser(
+  props: MakePublishedPostOfUserProps,
+) {
+  const { authorId, postId } = props;
+
+  const posts = await db.post.findUnique({
+    where: { id: postId },
+  });
+
+  if (!posts) {
+    return {
+      success: false,
+      message: "No posts found",
+    };
+  }
+
+  if (posts.authorId !== authorId) {
+    return {
+      success: false,
+      message: "No permissions to recovery the post",
+    };
+  }
+
+  await db.post.update({
+    where: { id: postId },
+    data: {
+      isPublished: true,
+      isDeleted: false,
+      publishedDate: new Date(),
+    },
+  });
+
+  return {
+    success: true,
+    message: "Post deleted successfully",
+  };
+}
+
+// interface CreatePostProps {
+//   title: string;
+//   content: string;
+//   authorId: string;
+// }
 // export async function createPost(props: CreatePostProps) {
 //   const { title, content, authorId } = props;
 //   try {

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Noto_Sans_Thai } from "next/font/google";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "react-toastify/ReactToastify.min.css";
 
 // Project components and styles
 import "../globals.css";

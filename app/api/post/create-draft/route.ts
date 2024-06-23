@@ -15,8 +15,7 @@ export async function POST(request: NextRequest) {
         imageAlt: "bus7_brother_zone_release_plan",
         slug: await generateSlug(title),
         url: "/post/" + (await generateSlug(title)),
-        isPublished: true,
-        publishedDate: new Date(),
+        isPublished: false,
       },
     });
 
