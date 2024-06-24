@@ -74,8 +74,9 @@ model Post {
     createdAt DateTime? @default(now()) @map("created_at")
     updatedAt DateTime? @updatedAt @map("updated_at")
 
-    author User  @relation(fields: [authorId], references: [id])
-    tags   Tag[] @relation()
+    author     User       @relation(fields: [authorId], references: [id])
+    tags       Tag[]
+    categories Category[]
 
     @@index([createdAt])
     @@index([authorId])
@@ -93,4 +94,16 @@ model Tag {
     posts Post[]
 
     @@map("tags")
+}
+
+model Category {
+    id            String @id @default(cuid())
+    categoryId    String @map("category_id")
+    categoryName  String @map("category_name")
+    categoryColor String @map("category_color")
+    categoryUrl   String @default("/") @map("category_url")
+
+    posts Post[]
+
+    @@map("category")
 }

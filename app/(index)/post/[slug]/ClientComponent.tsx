@@ -31,7 +31,7 @@ import Underline from "@tiptap/extension-underline";
 import parse from "html-react-parser";
 
 import "@/styles/editor.css";
-import { Post, Tag } from "@/types";
+import { Category, Post, Tag } from "@/types";
 
 export default function ClientComponent(props: any) {
   const postData: Post = props.postData;
@@ -105,15 +105,15 @@ export default function ClientComponent(props: any) {
           )}
 
           <div className="mt-4 flex flex-wrap gap-1.5">
-            {postData?.tags?.map((tag: Tag) => {
+            {postData?.categories?.map((category: Category) => {
               return (
-                <div key={tag.id}>
+                <div key={category.id}>
                   <Link
-                    title={tag.tagName}
-                    href={tag.tagUrl}
+                    title={category.categoryName}
+                    href={category.categoryUrl}
                     className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 transition-colors duration-300 hover:bg-blue-600 hover:text-blue-100"
                   >
-                    {tag.tagName}
+                    {category.categoryName}
                   </Link>
                 </div>
               );

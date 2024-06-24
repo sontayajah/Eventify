@@ -1,6 +1,6 @@
 // Project components and styles
 import "./globals.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/ReactToastify.min.css";
 export default async function RootLayout({
   children,
 }: {

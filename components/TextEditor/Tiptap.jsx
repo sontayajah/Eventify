@@ -66,7 +66,7 @@ const Tiptap = (props) => {
     }),
     Placeholder.configure({
       emptyEditorClass: 'is-editor-empty',
-      placeholder: 'เพิ่มเนื้อหาโพสต์ของคุณได้ที่นี่',
+      placeholder: 'เพิ่มเนื้อหาโพสต์ของคุณได้ที่นี่...',
     }),
     Highlight,
     Link.configure({

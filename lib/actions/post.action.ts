@@ -25,6 +25,7 @@ export async function getPostBySlug(props: GetPostBySlugProps) {
         },
       },
       tags: true,
+      categories: true,
     },
   });
 

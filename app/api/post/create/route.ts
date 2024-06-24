@@ -4,7 +4,7 @@ import db from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   try {
-    const { title, content, authorId } = await request.json();
+    const { title, content, authorId, category } = await request.json();
 
     const post = await db.post.create({
       data: {
@@ -17,6 +17,12 @@ export async function POST(request: NextRequest) {
         url: "/post/" + (await generateSlug(title)),
         isPublished: true,
         publishedDate: new Date(),
+        categories: {
+          connect:
+            category.length > 0
+              ? category.map((id: string) => ({ id: id }))
+              : [],
+        },
       },
     });
 
@@ -24,8 +30,8 @@ export async function POST(request: NextRequest) {
       { success: true, message: "Create Post Successfully", data: { post } },
       { status: 201 },
     );
-  } catch (error) {
-    console.log({ error });
+  } catch (error: any) {
+    console.error({ error });
   }
 }
 

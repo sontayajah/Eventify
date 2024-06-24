@@ -74,6 +74,7 @@ export interface Post {
 
   author: User; // Relation to User
   tags: Tag[]; // Many-to-many relation to Tag
+  categories: Category[]; // Many-to-many relation to Category
 }
 
 export interface Tag {
@@ -82,6 +83,16 @@ export interface Tag {
   tagName: string;
   tagColor: string;
   tagUrl: string; // Default "/"
+
+  posts: Post[]; // Many-to-many relation to Post
+}
+
+export interface Category {
+  id: string; // cuid
+  categoryId: string; // Unique
+  categoryName: string;
+  categoryColor: string;
+  categoryUrl: string; // Default "/"
 
   posts: Post[]; // Many-to-many relation to Post
 }

@@ -5,16 +5,26 @@ import { Button } from "@/components/ui/button";
 import { ChangeEvent, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
-import { User } from "@/types";
+import { Category, User } from "@/types";
 import { toast } from "react-toastify";
+import { ImagePlusIcon } from "lucide-react";
+import CategorySelection from "./CategorySelection";
 
-export default function NewPost({ user }: { user: User }) {
+export default function NewPost({
+  user,
+  categories,
+}: {
+  user: User;
+  categories: Category[];
+}) {
+  const router = useRouter();
+
   const [editor, setEditor] = useState<any>();
   const [title, setTitle] = useState<string>("");
   const [isPublishedLoading, setIsPublishedLoading] = useState<boolean>(false);
   const [isDraftLoading, setIsDraftLoading] = useState<boolean>(false);
 
-  const router = useRouter();
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
 
   return (
     <>
@@ -22,9 +32,38 @@ export default function NewPost({ user }: { user: User }) {
         {editor && (
           <>
             <div className="mx-auto mb-2 mt-8 px-4 sm:container">
+              <p className="text-lg font-semibold">รูปภาพหน้าปก</p>
+              <div className="mt-3 cursor-pointer rounded-md border border-slate-300 py-10 transition-colors hover:border-slate-400 dark:border-slate-800 dark:hover:border-slate-600">
+                <ImagePlusIcon
+                  className="mx-auto size-10"
+                  strokeWidth={1}
+                  color="hsl(var(--muted-foreground))"
+                />
+                <p className="mt-3 text-center text-base font-medium text-primary">
+                  อัปโหลดรูปภาพ
+                </p>
+                <p className="mt-1 text-center text-xs font-medium text-muted-foreground">
+                  PNG, JPG, WEBP ...
+                </p>
+              </div>
+            </div>
+          </>
+        )}
+
+        {editor && (
+          <CategorySelection
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+            categories={categories}
+          />
+        )}
+
+        {editor && (
+          <>
+            <div className="mx-auto mb-2 mt-5 px-4 sm:container">
               <textarea
                 className="block w-full resize-none bg-transparent py-4 text-3xl font-semibold leading-loose focus-visible:outline-none lg:text-4xl"
-                placeholder="เพิ่มหัวข้อโพสต์ ..."
+                placeholder="เพิ่มหัวข้อโพสต์..."
                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
                   setTitle(e.target.value);
                 }}
@@ -45,8 +84,16 @@ export default function NewPost({ user }: { user: User }) {
                 onClick={() => {
                   const savePostData = async () => {
                     try {
+                      if (selectedCategories.length === 0) {
+                        return toast.error("กรุณาเลือกอย่างน้อย 1 หมวดหมู่");
+                      }
+
                       if (title.length === 0) {
-                        return console.log("Title is empty");
+                        return toast.error("กรุณาเพิ่มหัวข้อโพสต์");
+                      }
+
+                      if (editor.isEmpty) {
+                        return toast.error("กรุณาเพิ่มเนื้อหาโพสต์");
                       }
 
                       setIsPublishedLoading(true);
@@ -55,6 +102,7 @@ export default function NewPost({ user }: { user: User }) {
                         title: title,
                         content: JSON.stringify(editor.getJSON()),
                         authorId: user.id,
+                        category: selectedCategories.map((prev) => prev.id),
                       };
 
                       const createPostResponse = await toast.promise(
