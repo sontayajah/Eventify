@@ -1,26 +1,45 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 
 import db from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   try {
-    const { title, content, authorId, category } = await request.json();
+    const formData = await request.formData();
+
+    const title = formData.get("title") as string;
+    const content = formData.get("content") as string;
+    const authorId = formData.get("authorId") as string;
+    const categories = formData.getAll("category[]") as string[];
+    const file = formData.get("file") as File;
+
+    if (!file) {
+      return NextResponse.json(
+        { success: false, message: "No file provided" },
+        { status: 400 },
+      );
+    }
+
+    // Upload the file
+    const blob = await put(file.name, file, {
+      access: "public",
+    });
 
     const post = await db.post.create({
       data: {
         title: title,
         content: content,
         authorId: authorId,
-        imageUrl: "/images/card-cover/bus7-brother-zone-release-plan.jpg",
-        imageAlt: "bus7_brother_zone_release_plan",
+        imageUrl: blob.url,
+        imageAlt: (await generateSlug(title)) + "-" + "image",
         slug: await generateSlug(title),
         url: "/post/" + (await generateSlug(title)),
         isPublished: true,
         publishedDate: new Date(),
         categories: {
           connect:
-            category.length > 0
-              ? category.map((id: string) => ({ id: id }))
+            categories.length > 0
+              ? categories.map((id: string) => ({ id: id }))
               : [],
         },
       },

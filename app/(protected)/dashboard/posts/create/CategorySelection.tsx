@@ -54,7 +54,7 @@ export default function CategorySelection({
 
   return (
     <>
-      <div className="relative mt-6 w-full sm:container ">
+      <div className="relative mt-6 w-full px-4 sm:container">
         <ul className="flex flex-wrap gap-4">
           {selectedCategories && selectedCategories.length > 0 && (
             <>

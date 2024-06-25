@@ -2,13 +2,14 @@
 
 import Tiptap from "@/components/TextEditor/Tiptap";
 import { Button } from "@/components/ui/button";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { useRouter } from "next/navigation";
 import { Category, User } from "@/types";
 import { toast } from "react-toastify";
 import { ImagePlusIcon } from "lucide-react";
 import CategorySelection from "./CategorySelection";
+import ImageUploader from "./ImageUploader";
 
 export default function NewPost({
   user,
@@ -26,28 +27,18 @@ export default function NewPost({
 
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
 
+  const [saveFileRef, setSaveFileRef] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
   return (
     <>
       <main className="m-auto mt-10">
         {editor && (
-          <>
-            <div className="mx-auto mb-2 mt-8 px-4 sm:container">
-              <p className="text-lg font-semibold">รูปภาพหน้าปก</p>
-              <div className="mt-3 cursor-pointer rounded-md border border-slate-300 py-10 transition-colors hover:border-slate-400 dark:border-slate-800 dark:hover:border-slate-600">
-                <ImagePlusIcon
-                  className="mx-auto size-10"
-                  strokeWidth={1}
-                  color="hsl(var(--muted-foreground))"
-                />
-                <p className="mt-3 text-center text-base font-medium text-primary">
-                  อัปโหลดรูปภาพ
-                </p>
-                <p className="mt-1 text-center text-xs font-medium text-muted-foreground">
-                  PNG, JPG, WEBP ...
-                </p>
-              </div>
-            </div>
-          </>
+          <ImageUploader
+            previewUrl={previewUrl}
+            setPreviewUrl={setPreviewUrl}
+            setSaveFileRef={setSaveFileRef}
+          />
         )}
 
         {editor && (
@@ -84,6 +75,10 @@ export default function NewPost({
                 onClick={() => {
                   const savePostData = async () => {
                     try {
+                      if (!saveFileRef) {
+                        return toast.error("กรุณาอัปโหลดรูปภาพ");
+                      }
+
                       if (selectedCategories.length === 0) {
                         return toast.error("กรุณาเลือกอย่างน้อย 1 หมวดหมู่");
                       }
@@ -98,20 +93,24 @@ export default function NewPost({
 
                       setIsPublishedLoading(true);
 
-                      const postData = {
-                        title: title,
-                        content: JSON.stringify(editor.getJSON()),
-                        authorId: user.id,
-                        category: selectedCategories.map((prev) => prev.id),
-                      };
+                      const formData = new FormData();
+                      formData.append("title", title);
+                      formData.append(
+                        "content",
+                        JSON.stringify(editor.getJSON()),
+                      );
+                      formData.append("authorId", user.id);
+                      formData.append("file", saveFileRef);
+
+                      // Add categories as individual form fields
+                      selectedCategories.forEach((category, index) => {
+                        formData.append(`category[${index}]`, category.id);
+                      });
 
                       const createPostResponse = await toast.promise(
                         fetch("/api/post/create", {
                           method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify(postData),
+                          body: formData,
                         }),
                         {
                           pending: "กำลังโพสต์...",
