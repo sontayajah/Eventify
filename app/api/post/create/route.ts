@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 
 import db from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
 export async function POST(request: NextRequest) {
   try {
@@ -46,7 +47,11 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Create Post Successfully", data: { post } },
+      {
+        success: true,
+        message: "Create Post Successfully",
+        redirect: post.url,
+      },
       { status: 201 },
     );
   } catch (error: any) {

@@ -122,7 +122,7 @@ export default function NewPost({
                       const createPostResult = await createPostResponse.json();
 
                       if (createPostResult?.success) {
-                        router.replace(createPostResult?.data.post.url);
+                        router.replace(createPostResult?.redirect);
                         router.refresh();
                       }
                     } catch (error) {
