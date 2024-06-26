@@ -21,7 +21,7 @@ const formSchema = z.object({
   }),
 });
 
-export default function UploadWithURL() {
+export default function EditorUploadWithURL() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

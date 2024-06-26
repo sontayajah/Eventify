@@ -6,7 +6,7 @@ export default function TrendingArtistsCard() {
   return (
     <div className="mt-4 grid grid-cols-5 justify-items-start gap-y-4 overflow-auto pb-4">
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/bus.jpg"}
             alt="bus"
@@ -21,7 +21,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/nunew.jpg"}
             alt="nunew"
@@ -36,7 +36,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/bowkylion.jpg"}
             alt="bowkylion"
@@ -51,7 +51,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/jeff-satur.jpg"}
             alt="jeffsatur"
@@ -66,7 +66,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/nont-tanont.jpg"}
             alt="nonttanont"
@@ -81,7 +81,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/4eve.jpg"}
             alt="4eve"
@@ -96,7 +96,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/billkin.jpg"}
             alt="billkin"
@@ -111,7 +111,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/pixxie.jpg"}
             alt="pixxie"
@@ -126,7 +126,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/bamm.jpg"}
             alt="bamm"
@@ -141,7 +141,7 @@ export default function TrendingArtistsCard() {
       </div>
 
       <div className="flex w-full flex-col items-center rounded-xl">
-        <div className="size-20 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
+        <div className="size-16 overflow-hidden rounded-xl md:size-32 lg:size-40 xl:size-52">
           <Image
             src={"/images/artists/spotify/proxie.jpg"}
             alt="proxie"

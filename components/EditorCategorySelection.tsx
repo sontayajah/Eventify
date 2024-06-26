@@ -4,16 +4,16 @@ import { Category } from "@/types";
 import { XIcon } from "lucide-react";
 import React, { Dispatch, SetStateAction, useState } from "react";
 
-interface CategorySelectionProps {
+interface EditorCategorySelectionProps {
   selectedCategories: Category[];
   setSelectedCategories: Dispatch<SetStateAction<Category[]>>;
   categories: Category[];
 }
-export default function CategorySelection({
+export default function EditorCategorySelection({
   selectedCategories,
   setSelectedCategories,
   categories,
-}: CategorySelectionProps) {
+}: EditorCategorySelectionProps) {
   const [categoryMenuOpen, setCategoryMenuOpen] = useState(false);
 
   const addselectedCategories = (selected: Category) => {
@@ -32,9 +32,9 @@ export default function CategorySelection({
         const updatedCategories = [...prev, selected];
 
         // Close the category menu if 3 categories are selected
-        if (updatedCategories.length === 3) {
-          setCategoryMenuOpen(false);
-        }
+        // if (updatedCategories.length === 3) {
+        //   setCategoryMenuOpen(false);
+        // }
 
         return updatedCategories;
       }
@@ -60,8 +60,8 @@ export default function CategorySelection({
             <>
               {selectedCategories.map((category) => {
                 return (
-                  <>
-                    <div key={category.id}>
+                  <React.Fragment key={category.id}>
+                    <div>
                       <Button
                         variant="secondary"
                         className={`cursor-default ${!selectedCategories.includes(category) ? "bg-muted-foreground/10 hover:bg-muted-foreground/15" : "bg-primary text-white hover:bg-primary/90"}`}
@@ -75,7 +75,7 @@ export default function CategorySelection({
                         />
                       </Button>
                     </div>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </>
@@ -92,7 +92,7 @@ export default function CategorySelection({
           </li>
         </ul>
 
-        {categoryMenuOpen && selectedCategories.length !== 3 && (
+        {categoryMenuOpen && (
           <>
             <div
               className="fixed inset-0 z-50 bg-opacity-0"
@@ -107,17 +107,22 @@ export default function CategorySelection({
                     <>
                       {categories.map((category) => {
                         return (
-                          <>
-                            <div key={category.id}>
+                          <React.Fragment key={category.id}>
+                            <div>
                               <Button
                                 variant="secondary"
                                 className={`${!selectedCategories.includes(category) ? "bg-muted-foreground/10 hover:bg-muted-foreground/15" : "bg-primary text-white hover:bg-primary/90"}`}
                                 onClick={() => addselectedCategories(category)}
+                                disabled={
+                                  !selectedCategories.includes(category) &&
+                                  selectedCategories.length === 3 &&
+                                  true
+                                }
                               >
                                 {category.categoryName}
                               </Button>
                             </div>
-                          </>
+                          </React.Fragment>
                         );
                       })}
                     </>

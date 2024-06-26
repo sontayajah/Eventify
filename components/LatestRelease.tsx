@@ -205,7 +205,8 @@ export default function LatestRelease() {
             variant="link"
             className="h-min w-fit px-0 py-0 hover:text-primary/90 hover:no-underline dark:text-primary"
             onClick={() => {
-              window.open("/latest-release", "_blank");
+              // window.open("/latest-release", "_blank");
+              window.open("/", "_blank");
             }}
           >
             ดูเพิ่มเติม <ChevronsRight size={16} className="ml-0.5" />

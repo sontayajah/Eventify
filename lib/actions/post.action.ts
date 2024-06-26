@@ -54,6 +54,7 @@ export async function getPostById(props: GetPostByIdProps) {
         },
       },
       tags: true,
+      categories: true,
     },
   });
 
@@ -113,6 +114,7 @@ export async function getAllPosts(props: GetAllPostsProps) {
         },
       },
       tags: true,
+      categories: true,
     },
     take: take,
     skip: skip,

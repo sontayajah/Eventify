@@ -38,7 +38,7 @@ export default async function LatestNews() {
       )}
 
       <div className="mt-4 flex items-center justify-end">
-        <SeeMoreButton url="/news" />
+        <SeeMoreButton url="/" />
       </div>
     </div>
   );

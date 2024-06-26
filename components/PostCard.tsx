@@ -7,7 +7,7 @@ import { ExternalLink, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatDateTime, formatTimeAgo } from "@/lib/utils";
 import PostCardContent from "@/components/PostCardContent";
-import { Post, Tag } from "@/types";
+import { Category, Post, Tag } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function PostCard({ allPosts }: { allPosts: Post[] }) {
@@ -58,20 +58,25 @@ export default function PostCard({ allPosts }: { allPosts: Post[] }) {
                     </Link>
                   </div>
                   <div className="mt-0 flex flex-grow flex-col gap-3 overflow-hidden truncate whitespace-normal md:mt-4">
-                    <div className="flex flex-nowrap gap-1.5 overflow-clip py-1.5">
-                      {post.tags.map((tag: Tag) => {
-                        return (
-                          <div key={tag.id} className="flex-shrink-0">
-                            <Link
-                              title={tag.tagName}
-                              href={tag.tagUrl}
-                              className={`${colorVariants[tag.tagColor]} rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset transition-colors duration-300`}
-                            >
-                              {tag.tagName}
-                            </Link>
-                          </div>
-                        );
-                      })}
+                    <div className="flex flex-wrap gap-x-1 gap-y-2 py-1.5">
+                      {post.categories.length > 0 && (
+                        <>
+                          {post.categories.map((category: Category) => {
+                            return (
+                              <div key={category.id} className="flex-shrink-0">
+                                <Link
+                                  title={category.categoryName}
+                                  // href={category.categoryUrl}
+                                  href="/"
+                                  className={`${colorVariants[category.categoryColor]} rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset transition-colors duration-300`}
+                                >
+                                  {category.categoryName}
+                                </Link>
+                              </div>
+                            );
+                          })}
+                        </>
+                      )}
                     </div>
 
                     <Link href={post.url} className="flex flex-col gap-3">
@@ -88,7 +93,8 @@ export default function PostCard({ allPosts }: { allPosts: Post[] }) {
                     </Link>
                     <div className="flex items-center">
                       <Link
-                        href={`/@${post?.author.username}`}
+                        // href={`/@${post?.author.username}`}
+                        href="/"
                         className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
                       >
                         {post?.author.profile?.imageUrl ? (

@@ -5,6 +5,7 @@ import ClientComponent from "./ClientComponent";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
 import DashboardNavbar from "@/components/DashboardNavbar";
+import { getAllCategories } from "@/lib/actions/category.action";
 
 export default async function EditPost({
   params,
@@ -13,15 +14,12 @@ export default async function EditPost({
 }) {
   const decodedSlug = decodeURIComponent(params.slug);
   const user = await getCurrentUser();
+  const categories = await getAllCategories();
 
   // Fetch the post data using the decoded slug
   const postData = await getPostById({ id: decodedSlug });
 
-  if (!postData) {
-    return redirect("/");
-  }
-
-  if (user && postData.authorId !== user.id) {
+  if (!postData || (user && postData.authorId !== user.id)) {
     return redirect("/");
   }
 
@@ -30,7 +28,11 @@ export default async function EditPost({
       {postData && (
         <>
           <DashboardNavbar page="createPost" />
-          <ClientComponent postData={postData} user={user} />
+          <ClientComponent
+            postData={postData}
+            user={user}
+            categories={categories}
+          />
         </>
       )}
     </>

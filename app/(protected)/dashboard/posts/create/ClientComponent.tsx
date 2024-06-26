@@ -1,15 +1,17 @@
 "use client";
 
+import { ChangeEvent, useState } from "react";
 import Tiptap from "@/components/TextEditor/Tiptap";
+import EditorCategorySelection from "@/components/EditorCategorySelection";
+import EditorImageUploader from "@/components/EditorImageUploader";
+
 import { Button } from "@/components/ui/button";
-import { ChangeEvent, useRef, useState } from "react";
 import { Separator } from "@/components/ui/separator";
-import { useRouter } from "next/navigation";
-import { Category, User } from "@/types";
+
+import { useRouter } from "next-nprogress-bar";
 import { toast } from "react-toastify";
-import { ImagePlusIcon } from "lucide-react";
-import CategorySelection from "./CategorySelection";
-import ImageUploader from "./ImageUploader";
+
+import { Category, User } from "@/types";
 
 export default function NewPost({
   user,
@@ -34,7 +36,7 @@ export default function NewPost({
     <>
       <main className="m-auto mt-10">
         {editor && (
-          <ImageUploader
+          <EditorImageUploader
             previewUrl={previewUrl}
             setPreviewUrl={setPreviewUrl}
             setSaveFileRef={setSaveFileRef}
@@ -42,7 +44,7 @@ export default function NewPost({
         )}
 
         {editor && (
-          <CategorySelection
+          <EditorCategorySelection
             selectedCategories={selectedCategories}
             setSelectedCategories={setSelectedCategories}
             categories={categories}
@@ -103,8 +105,8 @@ export default function NewPost({
                       formData.append("file", saveFileRef);
 
                       // Add categories as individual form fields
-                      selectedCategories.forEach((category, index) => {
-                        formData.append(`category[${index}]`, category.id);
+                      selectedCategories.forEach((category) => {
+                        formData.append("category", category.id);
                       });
 
                       const createPostResponse = await toast.promise(
@@ -126,8 +128,9 @@ export default function NewPost({
                         router.refresh();
                       }
                     } catch (error) {
-                      setIsPublishedLoading(false);
                       console.log(error);
+                    } finally {
+                      setIsPublishedLoading(false);
                     }
                   };
 
@@ -143,39 +146,62 @@ export default function NewPost({
                 className="px-16"
                 onClick={() => {
                   const savePostData = async () => {
-                    if (title.length === 0) {
-                      return console.log("Title is empty");
-                    }
+                    try {
+                      if (!saveFileRef) {
+                        return toast.error("กรุณาอัปโหลดรูปภาพ");
+                      }
 
-                    setIsDraftLoading(true);
+                      if (selectedCategories.length === 0) {
+                        return toast.error("กรุณาเลือกอย่างน้อย 1 หมวดหมู่");
+                      }
 
-                    const postData = {
-                      title: title,
-                      content: JSON.stringify(editor.getJSON()),
-                      authorId: user.id,
-                    };
+                      if (title.length === 0) {
+                        return toast.error("กรุณาเพิ่มหัวข้อโพสต์");
+                      }
 
-                    const createDraftPostResponse = await toast.promise(
-                      fetch("/api/post/create-draft", {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
+                      if (editor.isEmpty) {
+                        return toast.error("กรุณาเพิ่มเนื้อหาโพสต์");
+                      }
+
+                      setIsDraftLoading(true);
+
+                      const formData = new FormData();
+                      formData.append("title", title);
+                      formData.append(
+                        "content",
+                        JSON.stringify(editor.getJSON()),
+                      );
+                      formData.append("authorId", user.id);
+                      formData.append("file", saveFileRef);
+
+                      // Add categories as individual form fields
+                      selectedCategories.forEach((category, index) => {
+                        formData.append("category", category.id);
+                      });
+
+                      const createDraftPostResponse = await toast.promise(
+                        fetch("/api/post/create-draft", {
+                          method: "POST",
+                          body: formData,
+                        }),
+                        {
+                          pending: "กำลังบันทึกฉบับร่าง...",
+                          success: "บันทึกฉบับร่างสำเร็จ 👌",
+                          error: "บันทึกฉบับร่างไม่สำเร็จ 🤯",
                         },
-                        body: JSON.stringify(postData),
-                      }),
-                      {
-                        pending: "กำลังบันทึกฉบับร่าง...",
-                        success: "บันทึกฉบับร่างสำเร็จ 👌",
-                        error: "บันทึกฉบับร่างไม่สำเร็จ 🤯",
-                      },
-                    );
+                      );
 
-                    const createDraftPostResult =
-                      await createDraftPostResponse.json();
+                      const createDraftPostResult =
+                        await createDraftPostResponse.json();
 
-                    if (createDraftPostResult?.success) {
-                      router.replace(createDraftPostResult?.data.post.url);
-                      router.refresh();
+                      if (createDraftPostResult?.success) {
+                        router.replace(createDraftPostResult?.redirect);
+                        router.refresh();
+                      }
+                    } catch (error) {
+                      console.log(error);
+                    } finally {
+                      setIsPublishedLoading(false);
                     }
                   };
 

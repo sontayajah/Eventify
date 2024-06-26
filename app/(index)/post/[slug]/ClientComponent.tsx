@@ -34,6 +34,27 @@ import "@/styles/editor.css";
 import { Category, Post, Tag } from "@/types";
 
 export default function ClientComponent(props: any) {
+  const colorVariants: any = {
+    slate:
+      "bg-slate-50 text-slate-700 ring-slate-600/20 hover:bg-slate-600 hover:text-slate-100",
+    zinc: "bg-zinc-50 text-zinc-700 ring-zinc-600/20 hover:bg-zinc-600 hover:text-zinc-100",
+    red: "bg-red-50 text-red-700 ring-red-600/20 hover:bg-red-600 hover:text-red-100",
+    orange:
+      "bg-orange-50 text-orange-700 ring-orange-600/20 hover:bg-orange-600 hover:text-orange-100",
+    yellow:
+      "bg-yellow-50 text-yellow-700 ring-yellow-600/20 hover:bg-yellow-600 hover:text-yellow-100",
+    lime: "bg-lime-50 text-lime-700 ring-lime-600/20 hover:bg-lime-600 hover:text-lime-100",
+    green:
+      "bg-green-50 text-green-700 ring-green-600/20 hover:bg-green-600 hover:text-green-100",
+    sky: "bg-sky-50 text-sky-700 ring-sky-600/20 hover:bg-sky-600 hover:text-sky-100",
+    blue: "bg-blue-50 text-blue-700 ring-blue-600/20 hover:bg-blue-600 hover:text-blue-100",
+    violet:
+      "bg-violet-50 text-violet-700 ring-violet-600/20 hover:bg-violet-600 hover:text-violet-100",
+    fuchsia:
+      "bg-fuchsia-50 text-fuchsia-700 ring-fuchsia-600/20 hover:bg-fuchsia-600 hover:text-fuchsia-100",
+    pink: "bg-pink-50 text-pink-700 ring-pink-600/20 hover:bg-pink-600 hover:text-pink-100",
+  };
+
   const postData: Post = props.postData;
   const blogContent = JSON.parse(postData.content);
 
@@ -68,7 +89,8 @@ export default function ClientComponent(props: any) {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link href="/news" title="ข่าวสาร">
+                  {/* <Link href="/news" title="ข่าวสาร"> */}
+                  <Link href="/" title="ข่าวสาร">
                     ข่าวสาร
                   </Link>
                 </BreadcrumbLink>
@@ -110,8 +132,9 @@ export default function ClientComponent(props: any) {
                 <div key={category.id}>
                   <Link
                     title={category.categoryName}
-                    href={category.categoryUrl}
-                    className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 transition-colors duration-300 hover:bg-blue-600 hover:text-blue-100"
+                    // href={category.categoryUrl}
+                    href="/"
+                    className={`${colorVariants[category.categoryColor]} rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset transition-colors duration-300`}
                   >
                     {category.categoryName}
                   </Link>
@@ -130,7 +153,8 @@ export default function ClientComponent(props: any) {
 
             <div className="flex flex-col justify-between gap-4 md:flex-row">
               <Link
-                href={`/@${postData?.author.username}`}
+                // href={`/@${postData?.author.username}`}
+                href="/"
                 className="flex items-center text-xs text-neutral-700 group-hover/item:text-black dark:text-neutral-300 dark:hover:text-white"
               >
                 {postData?.author.profile?.imageUrl ? (

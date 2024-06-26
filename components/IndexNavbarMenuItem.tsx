@@ -28,7 +28,8 @@ export default function IndexNavbarArtistsMenu() {
     <NavigationMenu className="hidden lg:block">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/news" legacyBehavior passHref>
+          {/* <Link href="/news" legacyBehavior passHref> */}
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
@@ -60,9 +61,10 @@ export default function IndexNavbarArtistsMenu() {
                 </div>
                 <ul className="grid-3 grid gap-2 lg:grid-cols-[1fr_1fr_1fr]">
                   <li>
-                    <a
+                    <Link
                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/artists/soloist/male"
+                      // href="/artists/soloist/male"
+                      href="/"
                     >
                       <Image
                         src={"/images/artists/jeffsatur.png"}
@@ -74,12 +76,13 @@ export default function IndexNavbarArtistsMenu() {
                       <div className="flex items-center gap-2 pt-2 text-sm font-semibold leading-none">
                         ชาย
                       </div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/artists/soloist/female"
+                      // href="/artists/soloist/female"
+                      href="/"
                     >
                       <Image
                         src={"/images/artists/milli.png"}
@@ -91,7 +94,7 @@ export default function IndexNavbarArtistsMenu() {
                       <div className="flex items-center gap-2 pt-2 text-sm font-semibold leading-none">
                         หญิง
                       </div>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -113,9 +116,10 @@ export default function IndexNavbarArtistsMenu() {
                 </div>
                 <ul className="grid-3 grid gap-2 lg:grid-cols-[1fr_1fr_1fr]">
                   <li>
-                    <a
+                    <Link
                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/artists/groups/male"
+                      // href="/artists/groups/male"
+                      href="/"
                     >
                       <Image
                         src={"/images/artists/bus.png"}
@@ -127,12 +131,13 @@ export default function IndexNavbarArtistsMenu() {
                       <div className="flex items-center gap-2 pt-2 text-sm font-semibold leading-none">
                         ชาย
                       </div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/artists/groups/female"
+                      // href="/artists/groups/female"
+                      href="/"
                     >
                       <Image
                         src={"/images/artists/4eve.png"}
@@ -144,12 +149,13 @@ export default function IndexNavbarArtistsMenu() {
                       <div className="flex items-center gap-2 pt-2 text-sm font-semibold leading-none">
                         หญิง
                       </div>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/artists/groups/co-ed"
+                      // href="/artists/groups/co-ed"
+                      href="/"
                     >
                       <Image
                         src={"/images/artists/bamm.png"}
@@ -161,7 +167,7 @@ export default function IndexNavbarArtistsMenu() {
                       <div className="flex items-center gap-2 pt-2 text-sm font-semibold leading-none">
                         ผสม
                       </div>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -183,9 +189,10 @@ export default function IndexNavbarArtistsMenu() {
                 </div>
                 <ul className="grid gap-2 lg:grid-cols-[1fr_1fr_1fr]">
                   <li>
-                    <a
+                    <Link
                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/artists/bands"
+                      // href="/artists/bands"
+                      href="/"
                     >
                       <div className="flex w-full gap-8">
                         <Image
@@ -200,7 +207,7 @@ export default function IndexNavbarArtistsMenu() {
                       <div className="flex items-center gap-2 pt-2 text-sm font-semibold leading-none">
                         วงดนตรี
                       </div>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -214,9 +221,10 @@ export default function IndexNavbarArtistsMenu() {
           <NavigationMenuContent className="max-h-[75vh] overflow-auto">
             <ul className="grid p-3 lg:w-[500px] lg:grid-cols-[1fr]">
               <li>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="/events"
+                  // href="/events"
+                  href="/"
                 >
                   <div className="flex items-center gap-2 text-sm font-semibold leading-none">
                     <Music width={16} height={16} />
@@ -229,52 +237,64 @@ export default function IndexNavbarArtistsMenu() {
                     ผลงานดนตรีของศิลปิน เช่น ซิงเกิ้ล อัลบั้ม
                     หรือเพลงประกอบซีรีส์และภาพยนตร์
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="/concerts"
+                  // href="/concerts"
+                  href="/"
                 >
                   <div className="flex items-center gap-2 text-sm font-semibold leading-none">
                     <Video width={16} height={16} />
                     วิดีโอ
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="คลิปวิดีโอต่าง ๆ ของศิลปิน เช่น มิวสิกวิดีโอ, วิดีโอเบื้องหลังการถ่ายทำ, ไลฟ์, Vlog, Live Session">
+                  <p
+                    className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    title="คลิปวิดีโอต่าง ๆ ของศิลปิน เช่น มิวสิกวิดีโอ, วิดีโอเบื้องหลังการถ่ายทำ, ไลฟ์, Vlog, Live Session"
+                  >
                     คลิปวิดีโอต่าง ๆ ของศิลปิน เช่น มิวสิกวิดีโอ,
                     วิดีโอเบื้องหลังการถ่ายทำ, ไลฟ์, Vlog, Live Session
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="/concerts"
+                  // href="/concerts"
+                  href="/"
                 >
                   <div className="flex items-center gap-2 text-sm font-semibold leading-none">
                     <FileImage width={16} height={16} />
                     รูปภาพ
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="ภาพถ่ายต่าง ๆ ของศิลปิน เช่น ภาพจากการถ่ายแบบ ภาพจากกิจกรรมต่าง ๆ หรือคอนเสิร์ตของศิลปิน">
+                  <p
+                    className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    title="ภาพถ่ายต่าง ๆ ของศิลปิน เช่น ภาพจากการถ่ายแบบ ภาพจากกิจกรรมต่าง ๆ หรือคอนเสิร์ตของศิลปิน"
+                  >
                     ภาพถ่ายต่าง ๆ ของศิลปิน เช่น ภาพจากการถ่ายแบบ
                     ภาพจากกิจกรรมต่าง ๆ หรือคอนเสิร์ตของศิลปิน
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="/concerts"
+                  // href="/concerts"
+                  href="/"
                 >
                   <div className="flex items-center gap-2 text-sm font-semibold leading-none">
                     <Tv width={16} height={16} />
                     รายการโทรทัศน์/ออนไลน์
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="รายการที่ศิลปินเข้าร่วม ไม่ว่าจะเป็นรายการวาไรตี้, ทอล์คโชว์, ซีรีส์, หรือการแสดงผ่านรายการเพลง">
+                  <p
+                    className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    title="รายการที่ศิลปินเข้าร่วม ไม่ว่าจะเป็นรายการวาไรตี้, ทอล์คโชว์, ซีรีส์, หรือการแสดงผ่านรายการเพลง"
+                  >
                     รายการที่ศิลปินเข้าร่วม ไม่ว่าจะเป็นรายการวาไรตี้,
                     ทอล์คโชว์, ซีรีส์, หรือการแสดงผ่านรายการเพลง
                   </p>
-                </a>
+                </Link>
               </li>
             </ul>
           </NavigationMenuContent>
@@ -286,40 +306,49 @@ export default function IndexNavbarArtistsMenu() {
           <NavigationMenuContent className="max-h-[75vh] overflow-auto">
             <ul className="grid-2 grid p-3 lg:w-[500px] lg:grid-cols-[1fr]">
               <li>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="/events"
+                  href="/"
+                  // href="/events"
                 >
                   <div className="flex items-center gap-2 text-sm font-semibold leading-none">
                     <PartyPopper width={16} height={16} />
                     งานอีเวนต์
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="กิจกรรมอย่างเป็นทางการจากค่ายต้นสังกัดของศิลปิน หรือแบรนด์ต่าง ๆ ที่มีศิลปินเข้าร่วมงาน">
+                  <p
+                    className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    title="กิจกรรมอย่างเป็นทางการจากค่ายต้นสังกัดของศิลปิน หรือแบรนด์ต่าง ๆ ที่มีศิลปินเข้าร่วมงาน"
+                  >
                     กิจกรรมอย่างเป็นทางการจากค่ายต้นสังกัดของศิลปิน
                     หรือแบรนด์ต่าง ๆ ที่มีศิลปินเข้าร่วมงาน
                   </p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                  href="/concerts"
+                  // href="/concerts"
+                  href="/"
                 >
                   <div className="flex items-center gap-2 text-sm font-semibold leading-none">
                     <Ticket width={16} height={16} />
                     คอนเสิร์ต
                   </div>
-                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground" title="การแสดงสดของศิลปิน ทั้งมินิคอนเสิร์ต คอนเสิร์ตเดี่ยว คอนเสิร์ตรวมศิลปิน หรือการแสดงสดในเทศกาลพิเศษต่าง ๆ">
+                  <p
+                    className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                    title="การแสดงสดของศิลปิน ทั้งมินิคอนเสิร์ต คอนเสิร์ตเดี่ยว คอนเสิร์ตรวมศิลปิน หรือการแสดงสดในเทศกาลพิเศษต่าง ๆ"
+                  >
                     การแสดงสดของศิลปิน ทั้งมินิคอนเสิร์ต คอนเสิร์ตเดี่ยว
                     คอนเสิร์ตรวมศิลปิน หรือการแสดงสดในเทศกาลพิเศษต่าง ๆ
                   </p>
-                </a>
+                </Link>
               </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/community" legacyBehavior passHref>
+          {/* <Link href="/community" legacyBehavior passHref> */}
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
@@ -331,7 +360,8 @@ export default function IndexNavbarArtistsMenu() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/calender" legacyBehavior passHref>
+          {/* <Link href="/calender" legacyBehavior passHref> */}
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),

@@ -9,6 +9,7 @@ import "../globals.css";
 import IndexNavbar from "@/components/IndexNavbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ToastContainer } from "react-toastify";
+import ProgressBarProvider from "@/components/ProgressBarProvider";
 
 // Font setup
 const noto_sans_thai = Noto_Sans_Thai({
@@ -31,29 +32,31 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="th">
       <body className={`${noto_sans_thai.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <IndexNavbar />
-          {children}
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable={false}
-            pauseOnHover={false}
-            theme="light"
-          />
-        </ThemeProvider>
+        <ProgressBarProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <IndexNavbar />
+            {children}
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable={false}
+              pauseOnHover={false}
+              theme="light"
+            />
+          </ThemeProvider>
+        </ProgressBarProvider>
       </body>
     </html>
   );

@@ -36,7 +36,7 @@ export default async function FanCommunity() {
       )}
 
       <div className="mt-4 flex items-center justify-end">
-        <SeeMoreButton url="/community" />
+        <SeeMoreButton url="/" />
       </div>
     </div>
   );

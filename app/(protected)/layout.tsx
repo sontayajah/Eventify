@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 
 import { getCurrentUser } from "@/lib/session";
 import { redirect } from "next/navigation";
+import ProgressBarProvider from "@/components/ProgressBarProvider";
 
 // Font setup
 const noto_sans_thai = Noto_Sans_Thai({
@@ -41,26 +42,28 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${noto_sans_thai.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable={false}
-            pauseOnHover={false}
-            theme="light"
-          />
-        </ThemeProvider>
+        <ProgressBarProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable={false}
+              pauseOnHover={false}
+              theme="light"
+            />
+          </ThemeProvider>
+        </ProgressBarProvider>
       </body>
     </html>
   );

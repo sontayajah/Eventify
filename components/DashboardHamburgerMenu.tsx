@@ -147,7 +147,8 @@ export default function DashboardHamburgerMenu({
                     className={`chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline ${pathname === "/dashboard/edit/profile" ? " bg-muted" : ""} flex flex-1 justify-between py-4 font-medium`}
                   >
                     <Link
-                      href="/dashboard/edit/profile"
+                      // href="/dashboard/edit/profile"
+                      href="/"
                       className="w-full text-left"
                     >
                       แก้ไขโปรไฟล์
@@ -161,7 +162,8 @@ export default function DashboardHamburgerMenu({
                     className={`chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline ${pathname === "/dashboard/edit/account" ? " bg-muted" : ""} flex flex-1 justify-between py-4 font-medium`}
                   >
                     <Link
-                      href="/dashboard/edit/account"
+                      // href="/dashboard/edit/account"
+                      href="/"
                       className="w-full text-left"
                     >
                       ข้อมูลบัญชี
@@ -175,7 +177,8 @@ export default function DashboardHamburgerMenu({
                     className={`chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline ${pathname === "/dashboard/edit/password" ? " bg-muted" : ""} flex flex-1 justify-between py-4 font-medium`}
                   >
                     <Link
-                      href="/dashboard/edit/password"
+                      // href="/dashboard/edit/password"
+                      href="/"
                       className="w-full text-left"
                     >
                       เปลี่ยนรหัสผ่าน
@@ -189,7 +192,8 @@ export default function DashboardHamburgerMenu({
                     className={`chevronDownDisable mt-0.5 rounded-md px-4 py-2 hover:bg-muted hover:no-underline ${pathname === "/dashboard/edit/account-deleted" ? " bg-muted" : ""} flex flex-1 justify-between py-4 font-medium`}
                   >
                     <Link
-                      href="/dashboard/edit/account-deleted"
+                      // href="/dashboard/edit/account-deleted"
+                      href="/"
                       className="w-full text-left"
                     >
                       ลบบัญชี

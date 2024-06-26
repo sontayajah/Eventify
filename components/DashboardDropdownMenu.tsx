@@ -8,6 +8,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   ClipboardCopyIcon,
   EllipsisIcon,
   RocketIcon,
@@ -34,112 +44,131 @@ export default function DashboardDropdownMenu({
 }: DashboardDropdownMenuProps) {
   return (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="focus-visible:ring-transparent"
-          >
-            <EllipsisIcon className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          side="bottom"
-          align="end"
-          className="flex w-64 flex-col gap-1"
-        >
-          <>
-            <DropdownMenuItem
-              className="px-4 py-2"
-              onClick={() => {
-                toast.success("คัดลอกลิงก์ไปยังคลิปบอร์ดแล้ว");
-                navigator.clipboard.writeText(
-                  "https://tpopnow.vercel.app/" + post.url,
-                );
-              }}
+      <Dialog>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="focus-visible:ring-transparent"
             >
-              <ClipboardCopyIcon className="mr-2 h-5 w-5" />
-              <span className="text-base">คัดลอกลิงก์</span>
-            </DropdownMenuItem>
-          </>
-          {!post.isDeleted && (
+              <EllipsisIcon className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            side="bottom"
+            align="end"
+            className="flex w-64 flex-col gap-1"
+          >
             <>
-              <DropdownMenuItem className="px-4 py-2">
-                <Link
-                  href={`/dashboard/posts/edit/${post.id}`}
-                  className="flex flex-grow text-base"
+              <DropdownMenuItem
+                className="px-4 py-2"
+                onClick={() => {
+                  toast.success("คัดลอกลิงก์ไปยังคลิปบอร์ดแล้ว");
+                  navigator.clipboard.writeText(
+                    "https://tpopnow.vercel.app/" + post.url,
+                  );
+                }}
+              >
+                <ClipboardCopyIcon className="mr-2 h-5 w-5" />
+                <span className="text-base">คัดลอกลิงก์</span>
+              </DropdownMenuItem>
+            </>
+            {!post.isDeleted && (
+              <>
+                <DropdownMenuItem className="px-4 py-2">
+                  <Link
+                    href={`/dashboard/posts/edit/${post.id}`}
+                    className="flex flex-grow text-base"
+                  >
+                    <SquarePenIcon className="mr-2 h-5 w-5" />
+                    <span>แก้ไขโพสต์</span>
+                  </Link>
+                </DropdownMenuItem>
+              </>
+            )}
+            {!post.isPublished && !post.isDeleted && (
+              <>
+                <DropdownMenuItem
+                  className="px-4 py-2"
+                  onClick={async () => {
+                    try {
+                      // Show pending toast while waiting for the server response
+                      const makePublishedPostResponse = await toast.promise(
+                        makePublishedPost(post.id), // Calling the server-side function
+                        {
+                          pending: "กำลังเผยแพร่โพสต์...",
+                          success: "เผยแพร่โพสต์สำเร็จ 👌",
+                          error: "เผยแพร่โพสต์ไม่สำเร็จ 🤯",
+                        },
+                      );
+
+                      if (makePublishedPostResponse.success) {
+                        location.reload();
+                      }
+                    } catch (error) {
+                      // Handle error case (in case of exception)
+                      toast.error("มีข้อผิดพลาดในการเผยแพร่โพสต์ 🤯");
+                    }
+                  }}
                 >
-                  <SquarePenIcon className="mr-2 h-5 w-5" />
-                  <span>แก้ไขโพสต์</span>
-                </Link>
-              </DropdownMenuItem>
-            </>
-          )}
-          {!post.isPublished && !post.isDeleted && (
-            <>
-              <DropdownMenuItem
-                className="px-4 py-2"
-                onClick={async () => {
-                  try {
-                    // Show pending toast while waiting for the server response
-                    const makePublishedPostResponse = await toast.promise(
-                      makePublishedPost(post.id), // Calling the server-side function
-                      {
-                        pending: "กำลังเผยแพร่โพสต์...",
-                        success: "เผยแพร่โพสต์สำเร็จ 👌",
-                        error: "เผยแพร่โพสต์ไม่สำเร็จ 🤯",
-                      },
-                    );
+                  <RocketIcon className="mr-2 h-5 w-5" />
+                  <span className="text-base">เผยแพร่โพสต์</span>
+                </DropdownMenuItem>
+              </>
+            )}
+            {!post.isPublished && post.isDeleted && (
+              <>
+                <DropdownMenuItem
+                  className="px-4 py-2"
+                  onClick={async () => {
+                    try {
+                      // Show pending toast while waiting for the server response
+                      const recoveryPostResponse = await toast.promise(
+                        recoveryPost(post.id), // Calling the server-side function
+                        {
+                          pending: "กำลังกู้คืนโพสต์...",
+                          success: "กู้คืนโพสต์สำเร็จ 👌",
+                          error: "กู้คืนโพสต์ไม่สำเร็จ 🤯",
+                        },
+                      );
 
-                    if (makePublishedPostResponse.success) {
-                      location.reload();
+                      if (recoveryPostResponse.success) {
+                        location.reload();
+                      }
+                    } catch (error) {
+                      // Handle error case (in case of exception)
+                      toast.error("มีข้อผิดพลาดในการกู้คืนโพสต์ 🤯");
                     }
-                  } catch (error) {
-                    // Handle error case (in case of exception)
-                    toast.error("มีข้อผิดพลาดในการเผยแพร่โพสต์ 🤯");
-                  }
-                }}
-              >
-                <RocketIcon className="mr-2 h-5 w-5" />
-                <span className="text-base">เผยแพร่โพสต์</span>
-              </DropdownMenuItem>
-            </>
-          )}
-          {!post.isPublished && post.isDeleted && (
-            <>
-              <DropdownMenuItem
-                className="px-4 py-2"
-                onClick={async () => {
-                  try {
-                    // Show pending toast while waiting for the server response
-                    const recoveryPostResponse = await toast.promise(
-                      recoveryPost(post.id), // Calling the server-side function
-                      {
-                        pending: "กำลังกู้คืนโพสต์...",
-                        success: "กู้คืนโพสต์สำเร็จ 👌",
-                        error: "กู้คืนโพสต์ไม่สำเร็จ 🤯",
-                      },
-                    );
-
-                    if (recoveryPostResponse.success) {
-                      location.reload();
-                    }
-                  } catch (error) {
-                    // Handle error case (in case of exception)
-                    toast.error("มีข้อผิดพลาดในการกู้คืนโพสต์ 🤯");
-                  }
-                }}
-              >
-                <Undo2Icon className="mr-2 h-5 w-5" />
-                <span className="text-base">กู้คืนไปที่ฉบับร่าง</span>
-              </DropdownMenuItem>
-            </>
-          )}
-          {!post.isDeleted && (
-            <>
-              <DropdownMenuItem
-                className="px-4 py-2"
+                  }}
+                >
+                  <Undo2Icon className="mr-2 h-5 w-5" />
+                  <span className="text-base">กู้คืนไปที่ฉบับร่าง</span>
+                </DropdownMenuItem>
+              </>
+            )}
+            {!post.isDeleted && (
+              <>
+                <DropdownMenuItem className="px-4 py-2" asChild>
+                  <DialogTrigger className="flex">
+                    <Trash2Icon className="mr-2 h-5 w-5" />
+                    <span className="text-base">ลบโพสต์</span>
+                  </DialogTrigger>
+                </DropdownMenuItem>
+              </>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>ยืนยันการลบโพสต์?</DialogTitle>
+            <DialogDescription>คุณยืนยันที่จะลบโพสต์หรือไม่?</DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button
+                type="submit"
+                variant="destructive"
                 onClick={async () => {
                   try {
                     // Show pending toast while waiting for the server response
@@ -161,13 +190,12 @@ export default function DashboardDropdownMenu({
                   }
                 }}
               >
-                <Trash2Icon className="mr-2 h-5 w-5" />
-                <span className="text-base">ลบโพสต์</span>
-              </DropdownMenuItem>
-            </>
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
+                ลบ
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

@@ -75,7 +75,8 @@ export default async function ProfileDropdownMenu() {
             )}
             {user && (
               <div className="hidden lg:block">
-                <Link href={`/@${profile?.user.username}`}>
+                {/* <Link href={`/@${profile?.user.username}`}> */}
+                <Link href="/">
                   <div className="col-span-5 flex flex-col justify-center">
                     <div className="flex items-center">
                       <div
@@ -114,7 +115,8 @@ export default async function ProfileDropdownMenu() {
           {user && (
             <div className="lg:hidden">
               <DropdownMenuLabel>
-                <Link href={`/@${profile?.user.username}`}>
+                {/* <Link href={`/@${profile?.user.username}`}> */}
+                <Link href="/">
                   <div className="grid grid-cols-6">
                     {profile?.imageUrl ? (
                       <div className="flex items-center">
@@ -188,7 +190,8 @@ export default async function ProfileDropdownMenu() {
               <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                   <Link
-                    href={`/@${profile?.user.username}`}
+                    // href={`/@${profile?.user.username}`}
+                   href="/"
                     className="flex flex-grow text-base"
                   >
                     <User className="mr-4 h-6 w-6" />
@@ -197,7 +200,8 @@ export default async function ProfileDropdownMenu() {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link
-                    href="/dashboard/profile/edit"
+                    // href="/dashboard/profile/edit"
+                    href="/"
                     className="flex flex-grow text-base"
                   >
                     <UserCog className="mr-4 h-6 w-6" />
