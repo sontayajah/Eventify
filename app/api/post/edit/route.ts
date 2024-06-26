@@ -22,17 +22,23 @@ export async function POST(request: NextRequest) {
     });
 
     if (!post) {
-      return {
-        success: false,
-        message: "No posts found",
-      };
+      return NextResponse.json(
+        {
+          success: false,
+          message: "No posts found",
+        },
+        { status: 404 },
+      );
     }
 
     if (post.authorId !== authorId) {
-      return {
-        success: false,
-        message: "No permissions to edit the post",
-      };
+      return NextResponse.json(
+        {
+          success: false,
+          message: "No permissions to edit the post",
+        },
+        { status: 403 },
+      );
     }
 
     // if (!file) {
@@ -77,9 +83,16 @@ export async function POST(request: NextRequest) {
         message: "Edit Post Successfully",
         redirect: updatedPost.url,
       },
-      { status: 201 },
+      { status: 200 },
     );
   } catch (error) {
-    console.log({ error });
+    console.error(error);
+    return NextResponse.json(
+      {
+        success: false,
+        message: "An error occurred while editing the post",
+      },
+      { status: 500 },
+    );
   }
 }

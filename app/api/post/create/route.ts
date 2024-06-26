@@ -54,7 +54,14 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 },
     );
-  } catch (error: any) {
-    console.error({ error });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      {
+        success: false,
+        message: "An error occurred while editing the post",
+      },
+      { status: 500 },
+    );
   }
 }
