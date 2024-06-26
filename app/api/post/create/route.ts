@@ -2,7 +2,6 @@ import { type NextRequest, NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 
 import db from "@/lib/prisma";
-import { redirect } from "next/navigation";
 import { generateSlug } from "@/lib/utils";
 
 export async function POST(request: NextRequest) {

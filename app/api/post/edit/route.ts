@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
 import db from "@/lib/prisma";
-import { put } from "@vercel/blob";
-import { generateSlug } from "@/lib/utils";
 
 export async function POST(request: NextRequest) {
   try {
@@ -59,7 +57,7 @@ export async function POST(request: NextRequest) {
       (id) => !categories.includes(id),
     );
 
-    await db.post.update({
+    const updatedPost = await db.post.update({
       where: { id: postId },
       data: {
         title: title,
@@ -74,7 +72,11 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Edit Post Successfully", redirect: post.url },
+      {
+        success: true,
+        message: "Edit Post Successfully",
+        redirect: updatedPost.url,
+      },
       { status: 201 },
     );
   } catch (error) {
